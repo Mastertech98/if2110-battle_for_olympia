@@ -31,7 +31,8 @@ address Alokasi(infotype X)
 /* Jika alokasi gagal, mengirimkan NULL */
 {
     address P;
-    if (P = (address)malloc(sizeof(ElmtList)))
+    P = (address)malloc(sizeof(ElmtList));
+    if (P!= NULL)
     {
         Info(P) = X;
         Next(P) = NULL;

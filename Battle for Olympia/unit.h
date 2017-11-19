@@ -2,6 +2,10 @@
 #define UNIT_H
 
 #include "ADT/point.h"
+#define ArcherPrice 5
+#define SwordsmanPrice 10
+#define WhiteMagePrice 20
+
 
 typedef enum EUnitClass {King = 'K', Archer = 'A', Swordsman = 'S', WhiteMage = 'W'} UnitClass;
 typedef enum EAttackType {Melee, Ranged} AttackType;

@@ -32,7 +32,7 @@ Unit CreateUnit(UnitClass unitClass, char color, POINT location) {
             .attackType = Ranged,
             .chanceAttack = true,
             .location = location,
-            .price = 5
+            .price = ArcherPrice
         };
         return unit;
     } else if (unitClass == Swordsman) {
@@ -48,7 +48,7 @@ Unit CreateUnit(UnitClass unitClass, char color, POINT location) {
             .attackType = Melee,
             .chanceAttack = true,
             .location = location,
-            .price = 4
+            .price = SwordsmanPrice
         };
         return unit;
     } else if (unitClass == WhiteMage) {
@@ -64,7 +64,7 @@ Unit CreateUnit(UnitClass unitClass, char color, POINT location) {
             .attackType = Melee,
             .chanceAttack = true,
             .location = location,
-            .price = 8
+            .price = WhiteMagePrice
         };
         return unit;
     } else {
