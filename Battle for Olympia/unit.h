@@ -2,27 +2,23 @@
 #define UNIT_H
 
 #include "ADT/point.h"
-#define ArcherPrice 5
-#define SwordsmanPrice 10
-#define WhiteMagePrice 20
-
 
 typedef enum EUnitClass {King = 'K', Archer = 'A', Swordsman = 'S', WhiteMage = 'W'} UnitClass;
 typedef enum EAttackType {Melee, Ranged} AttackType;
 
 typedef struct SUnit {
-    const UnitClass unitClass;
-    const char color;
+    UnitClass unitClass;
+    char color;
 
-    const int maximumHealth;
+    int maximumHealth;
     int health;
-    const int attack;
-    const int maximumMovementPoints;
+    int attack;
+    int maximumMovementPoints;
     int movementPoints;
-    const AttackType attackType;
+    AttackType attackType;
     boolean chanceAttack;
     POINT location;
-    const int price;
+    int price;
 } Unit;
 
 Unit CreateUnit(UnitClass unitClass, char color, POINT location);

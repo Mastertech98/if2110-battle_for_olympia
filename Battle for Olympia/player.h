@@ -11,7 +11,7 @@ typedef struct SPlayer {
     List villages;
     int income;
     int upkeep;
-    const char color;
+    char color;
 } Player;
 
 Player players[MaxPlayer];

@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include "ADT/point.h"
+#include "ADT/matriks.h"
 
 #include "player.h"
 #include "unit.h"
@@ -9,17 +10,13 @@
 typedef enum EType {Normal, Tower, Castle, Village} Type;
 
 typedef struct SGrid {
-    const POINT coordinate;
-    const Type type;
+    POINT coordinate;
+    Type type;
     Player *owner;
     Unit *unit;
 } Grid;
 
-typedef struct SMap {
-    Grid *Mem;
-    int N;
-    int M;
-} Map;
+typedef MATRIKS Map;
 
 Map CreateMap(int N, int M);
 
