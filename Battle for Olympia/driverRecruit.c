@@ -8,6 +8,7 @@ int main()
     POINT location1;
     List *temp;
     int N,x,y;
+    char type;
     
     CreateEmptyList(&units);
     CreateEmptyList(&villages);
@@ -20,10 +21,14 @@ int main()
     scanf("%d", &N);
     for (int i = 1; i<=N; i++)
     {
-        scanf("%d,%d",&x,&y);
+        scanf("%d,%d,%c",&x,&y,&type);
         location1 = MakePOINT(x,y);
-        Unit unit1 = CreateUnit(Swordsman, 0, location1);
-        TambahUnit(&P1,unit1);
+        if(type =='A')
+            TambahUnit(&P1,CreateUnit(Archer, 0, location1));
+        else if(type =='S')
+            TambahUnit(&P1,CreateUnit(Swordsman, 0, location1));
+        else if(type =='W')
+            TambahUnit(&P1,CreateUnit(WhiteMage, 0, location1));
     }
     
     //Unit unit2 = CreateUnit(Swordsman, 0, location2);
