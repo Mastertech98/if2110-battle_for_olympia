@@ -30,7 +30,7 @@ const Unit UNITMOV = {
 
 void Move(Unit *unit, Map *map);
 void MakeMovementMap(Unit unit);
-void CleanMovementMap(Map *map);
+void ClearMovementMap(Map *map);
 boolean IsValidUndo();
 void Undo(Unit *U);
 
