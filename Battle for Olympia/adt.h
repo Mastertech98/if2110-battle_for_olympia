@@ -1,7 +1,0 @@
-#include "ADT/jam.h"
-#include "ADT/point.h"
-#include "ADT/matriks.h"
-#include "ADT/mesinkata.h"
-#include "ADT/queue.h"
-#include "ADT/stackt.h"
-#include "ADT/listlinier.h"
