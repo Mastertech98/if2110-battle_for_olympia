@@ -2,66 +2,62 @@
 
 #include <stdlib.h>
 
+const Grid EMPTYGRID {
+    .coordinate.X = 0;
+    .coordinate.Y = 0;
+    .type = Normal;
+    .owner = NULL;
+    .unit = NULL;
+}
+
 Map map;
 
-POINT GetCoordinate(Grid grid) 
-/* Mengembalikan koordinat yang bertipe bentukan point */
+void CreateMap(int N, int M)
 {
+	MakeMATRIKS(&map,N,M);
+	
+	for(int i=0; i<NB*NK; i++){
+		map.Mem[i] = EMPTYGRID;
+		printf("%d",map.Mem[i].x);
+	}
+}
+
+POINT GetCoordinate(Grid grid) {
     return grid.coordinate;
 }
 
-Type GetType(Grid grid) 
-/* Mengembalikan tipe petak, Tower, Castle, dll. */
-{
+Type GetType(Grid grid) {
     return grid.type;
 }
 
-Player *GetOwner(Grid grid) 
-/* Mengembalikan pemilik dari petak tersebut, player1, player 2, atau tidak ada */
-{
+Player *GetOwner(Grid grid) {
     return grid.owner;
 }
 
-void SetOwner(Grid *grid, Player *owner) 
-/* I.S. : Pemilik suatu petak terdfinisi, bisa jadi kosong */
-/* F.S. : Pemilik petak menjadi owner */
-{
+void SetOwner(Grid *grid, Player *owner) {
     grid->owner = owner;
 }
 
-Unit *GetUnit(Grid grid)
-/* Mengembalikan unit yang ada di petak tersebut */
-{
+Unit *GetUnit(Grid grid) {
     return grid.unit;
 }
 
-void SetUnit(Grid *grid, Unit *unit) 
-/*I.S. : Suatu petak memiliki sebuah unit sembarang, bisa kosong */
-/*F.S. : Petak ditempati oleh unit */
-{
+void SetUnit(Grid *grid, Unit *unit) {
     grid->unit = unit;
 }
 
-char GetGridColor(Grid grid) 
-/* Mengembalikan warna pemilik petak ini */
-{
+char GetGridColor(Grid grid) {
     return GetColor(*grid.owner);
 }
 
-Grid *GetGrid(int x, int y)
-/* Mengembalikan petak dari koordinat (x,y) */
-{
-    return &map.Mem[4 * x + y];
+Grid *GetGrid(int x, int y) {
+    return &(map.Mem[GetMapSizeM() * y + x]);
 }
 
-int GetMapSizeN() 
-/* Mengembalikan N jika map berukuran NxM */
-{
+int GetMapSizeN() {
     return map.N;
 }
 
-int GetMapSizeM() 
-/* Mengembalikan M jika map berukuran NxM */
-{
+int GetMapSizeM() {
     return map.M;
 }
