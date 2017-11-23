@@ -1,6 +1,7 @@
 /* ********** Realisasi TYPE MATRIKS dengan indeks dan elemen integer ********** */
 
 #include "matriks.h"
+#include "../map.h"
 
 #include <stdlib.h>
 
