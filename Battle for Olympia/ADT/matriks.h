@@ -9,7 +9,6 @@
 
 #include "../player.h"
 #include "../unit.h"
-//#include "../map.h"
 
 typedef enum EType {Normal, Tower, Castle, Village} Type;
 
