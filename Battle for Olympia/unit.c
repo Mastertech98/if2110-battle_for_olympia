@@ -2,6 +2,58 @@
 
 #include <string.h>
 
+const Unit KING = {
+    .unitClass = King,
+
+    .maximumHealth = 14,
+    .health = 14,
+    .attack = 4,
+    .maximumMovementPoints = 4,
+    .movementPoints = 0,
+    .attackType = Melee,
+    .chanceAttack = true,
+    .price = 0
+};
+
+const Unit ARCHER = {
+    .unitClass = Archer,
+
+    .maximumHealth = 10,
+    .health = 10,
+    .attack = 6,
+    .maximumMovementPoints = 3,
+    .movementPoints = 0,
+    .attackType = Ranged,
+    .chanceAttack = true,
+    .price = 8
+};
+
+const Unit SWORDSMAN = {
+    .unitClass = Swordsman,
+
+    .maximumHealth = 50,
+    .health = 16,
+    .attack = 8,
+    .maximumMovementPoints = 4,
+    .movementPoints = 0,
+    .attackType = Melee,
+    .chanceAttack = true,
+    .price = 8
+};
+
+const Unit WHITEMAGE = {
+    .unitClass = WhiteMage,
+
+    .maximumHealth = 8,
+    .health = 8,
+    .attack = 2,
+    .maximumMovementPoints = 2,
+    .movementPoints = 0,
+    .attackType = Melee,
+    .chanceAttack = true,
+    .price = 10
+};
+
 Unit CreateUnit(UnitClass unitClass, char color, POINT location) {
     Unit unit;
 
