@@ -6,11 +6,19 @@
 #define stackt_H
 
 #include "boolean.h"
+#include "../unit.h"
+#include "point.h"
+#include "../adt.h"
 
-#define MaxElStack 10
+#define MaxElStack 100
 /* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
 
-typedef int infotypeStack;
+typedef struct {
+    Unit *unit;
+    int movPoint;
+    POINT origin;
+    POINT destination;
+} infotypeStack;
 typedef int addrStack;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
@@ -28,6 +36,10 @@ typedef struct {
 /* Definisi akses dengan Selektor : Set dan Get */
 #define Top(S) (S).TOP
 #define InfoTop(S) (S).T[(S).TOP]
+#define InfoTopUnit(S) (S).T[(S).TOP]->unit
+#define InfoTopMovPoint(S) (S).T[(S).TOP].movPoint
+#define InfoTopOrigin(S) (S).T[(S).TOP].origin
+#define InfoTopDestination(S) (S).T[(S).TOP].destination
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
