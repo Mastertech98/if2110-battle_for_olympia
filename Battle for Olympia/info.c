@@ -91,55 +91,55 @@ void PrintMap(){
 									}
 								}
 							} else if(j==2){
-								if(GetUnit(*GetGrid(i, k/4)) != NULL && GetGrid(i, k/4) != NULL){
+								if(GetUnit(*GetGrid(i, k/4)) != NULL){
 									if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'R'){
-										if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == King){
+										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
 											print_red('K');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Archer){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
 											print_red('A');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
 											print_red('S');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
 											print_red('W');
 										}
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'G'){
-										if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == King){
+										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
 											print_green('K');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Archer){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
 											print_green('A');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
 											print_green('S');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
 											print_green('W');
 										}
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'Y'){
-										if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == King){
+										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
 											print_yellow('K');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Archer){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
 											print_yellow('A');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
 											print_yellow('S');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
 											print_yellow('W');
 										}
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'B'){
-										if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == King){
+										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
 											print_blue('K');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Archer){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
 											print_blue('A');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
 											print_blue('S');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
 											print_blue('W');
 										}
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'M'){
-										if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == King){
+										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
 											print_magenta('K');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Archer){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
 											print_magenta('A');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
 											print_magenta('S');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
+										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
 											print_magenta('W');
 										}
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'C'){
@@ -152,9 +152,9 @@ void PrintMap(){
 										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
 											print_cyan('W');
 										}
-									} else {
-										printf(" ");
 									} 
+							} else {
+								printf(" ");
 							} 
 						} else if(j = 3){
 							printf(" ");
