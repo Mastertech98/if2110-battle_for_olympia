@@ -40,7 +40,7 @@ void Move(Unit *unit, Map *map)
         }
     }while(!moved);
 
-    CleanMovementMap(map);
+    ClearMovementMap(map);
 }
 
 void MakeMovementMap(Unit unit)
@@ -52,7 +52,9 @@ void MakeMovementMap(Unit unit)
         for(int j=-1; j<=0; j++){
             //continue iterating when the unit still has movementpoint and the unit in the checked grid is noone or ally
             while(i<=GetMovementPoints(unit) && (GetColor(*GetOwner(*GetGrid(Absis(GetLocation(unit))+(i*abs(j)*k), Ordinat(GetLocation(unit))+(i*abs(j+1)*k))))== GetUnitColor(unit) || GetUnit(*GetGrid(Absis(GetLocation(unit))+(i*abs(j)*k), Ordinat(GetLocation(unit))+(i*abs(j+1)*k)))!=NULL ) ){
-                SetUnit(GetGrid(Absis(GetLocation(unit))+(i*abs(j)*k), Ordinat(GetLocation(unit))+(i*abs(j+1)*k)), &UNITMOV);
+                if(GetUnit(*GetGrid(Absis(GetLocation(unit))+(i*abs(j)*k), Ordinat(GetLocation(unit))+(i*abs(j+1)*k)))==NULL){
+                    SetUnit(GetGrid(Absis(GetLocation(unit))+(i*abs(j)*k), Ordinat(GetLocation(unit))+(i*abs(j+1)*k)), &UNITMOV);
+                }
                 i++;
             }
             i = 1;
@@ -60,7 +62,7 @@ void MakeMovementMap(Unit unit)
     }
 }
 
-void CleanMovementMap(Map *map)
+void ClearMovementMap(Map *map)
 {
     for(int i=1; i<=N(*map); i++){
         for(int j=1; i<=M(*map); j++){
@@ -81,10 +83,10 @@ void Undo(Unit *unit){
 		printf("You can't undo.\n");
 	} else {
 		Pop(&S_moves, &tempS_moves);
-        SetLocation(unit, tempS_moves.origin);
-        SetMovementPoints(unit, tempS_moves.movPoint);
-        SetUnit(GetGrid(Absis(tempS_moves.origin),Ordinat(tempS_moves.origin)), unit);
-        SetUnit(GetGrid(Absis(tempS_moves.destination),Ordinat(tempS_moves.destination)), NULL);
-        printf("You've successfuly undo your unit to (%d,%d).\n", Absis(tempS_moves.destination),Ordinat(tempS_moves.destination));
+        SetLocation(unit, InfoStackOrigin(tempS_moves));
+        SetMovementPoints(unit, InfoStackMovPoint(tempS_moves));
+        SetUnit(GetGrid(Absis(InfoStackOrigin(tempS_moves)),Ordinat(InfoStackOrigin(tempS_moves))), unit);
+        SetUnit(GetGrid(Absis(InfoStackDestination(tempS_moves)),Ordinat(InfoStackDestination(tempS_moves))), NULL);
+        printf("You've successfuly undo your unit to (%d,%d).\n", Absis(InfoStackDestination(tempS_moves)),Ordinat(InfoStackDestination(tempS_moves)));
 	}
 }
