@@ -137,7 +137,7 @@ void PrintListUnits(List units)
     {
         pointedUnit = (Unit *) Info(Pt);
         UnitClassName(GetUnitClass(*pointedUnit), namaunit);
-        location = (POINT)GetLocation(*pointedUnit);
+        location = GetLocation(*pointedUnit);
         printf("%d. %s (%d,%d) | Health %d\n", i, namaunit, Absis(location), Ordinat(location), GetHealth(*pointedUnit));
         Pt = Next(Pt);
         i++;
