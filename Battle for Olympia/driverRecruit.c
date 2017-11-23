@@ -24,11 +24,17 @@ int main()
         scanf("%d,%d,%c",&x,&y,&type);
         location1 = MakePOINT(x,y);
         if(type =='A')
-            TambahUnit(&P1,CreateUnit(Archer, 0, location1));
+        {
+            AddUnit(&P1,CreateUnit(Archer, 0, location1));
+        }
         else if(type =='S')
-            TambahUnit(&P1,CreateUnit(Swordsman, 0, location1));
+        {
+            AddUnit(&P1,CreateUnit(Swordsman, 0, location1));
+        }
         else if(type =='W')
-            TambahUnit(&P1,CreateUnit(WhiteMage, 0, location1));
+        {
+            AddUnit(&P1,CreateUnit(WhiteMage, 0, location1));
+        }
     }
     
     //Unit unit2 = CreateUnit(Swordsman, 0, location2);
@@ -38,7 +44,7 @@ int main()
     temp = GetUnits(&P1);
     PrintListUnits(*temp);
 
-    PrintListHarga();
+    PrintPriceList();
 
     return 0;
 }

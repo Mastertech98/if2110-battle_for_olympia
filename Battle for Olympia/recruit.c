@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void TambahUnit (Player *P, Unit unit)
+void AddUnit (Player *P, Unit unit)
 /*I.S P adalah Player yang sedang memainkan turnnya, location adalah grid dari selected unit, dan X adalah parameter untuk unit yang akan ditambah*/
 /*F.S jika X == A, maka archer akan ditambahkan ke list of units
       jika X == S, maka swordsman akan ditambahkan ke list of units
@@ -11,8 +11,20 @@ void TambahUnit (Player *P, Unit unit)
     List *unitList = GetUnits(P);
 
     SetMovementPoints(&unit,0);
-    InsVLast(unitList,&unit);
-    P->units = *unitList;
+    Unit *X = (Unit *) malloc (sizeof(Unit));
+    X->unitClass = unit.unitClass;
+    X->color = unit.color;
+    X->maximumHealth = unit.maximumHealth;
+    X->health = unit.health;
+    X->attack = unit.attack;
+    X->maximumMovementPoints = unit.maximumMovementPoints;
+    X->movementPoints = unit.movementPoints;
+    X->attackType = unit.attackType;
+    X->chanceAttack = unit.chanceAttack;
+    X->location = unit.location;
+    X->price = unit.price;
+    SetUnit(GetGrid(Absis(GetLocation(unit)), Ordinat(GetLocation(unit))), X);
+    InsVLast(unitList,X);
     
 }
 
@@ -48,7 +60,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                     }
                     else
                     {
-                        PrintListHarga();
+                        PrintPriceList();
                         printf("Enter no. of unit you want to recruit: ");
                         scanf("%d",&i);
                         switch (i){
@@ -58,7 +70,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 {
                                     printf("You have recruited an Archer!\n");
                                     Unit unit = CreateUnit(Archer, GetColor(*P), temp);
-                                    TambahUnit(P,unit);
+                                    AddUnit(P,unit);
                                 }
                                 else   
                                     printf("You don't have enough money");
@@ -70,7 +82,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 {
                                     printf("You have recruited a Swordsman!\n");
                                     Unit unit = CreateUnit(Swordsman, GetColor(*P), temp);
-                                    TambahUnit(P,unit);
+                                    AddUnit(P,unit);
                                 }
                                 else   
                                     printf("You don't have enough money");
@@ -82,7 +94,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 {
                                     printf("You have recruited an whiteMage!\n");
                                     Unit unit = CreateUnit(WhiteMage, GetColor(*P), temp);
-                                    TambahUnit(P,unit);
+                                    AddUnit(P,unit);
                                 }
                                 else   
                                     printf("You don't have enough money");
@@ -155,17 +167,12 @@ void PrintListUnits(List units)
     }
 }
 
-void PrintListHarga()
+void PrintPriceList()
 /*I.S. sembarang*/
 /*F.S. List harga dari semua unit yang dapat direcruit ditampilkan ke layar*/
 {
-    POINT dummy;
-    dummy = MakePOINT(999,999);
-    Unit archer = CreateUnit(Archer, 0, dummy);
-    Unit swordsman = CreateUnit(Swordsman, 0 , dummy);
-    Unit whitemage = CreateUnit(WhiteMage,0 , dummy);
     printf("== List of Recruits ==\n");
-    printf("1. Archer | Health %d | ATK %d | %dG\n", GetMaximumHealth(archer), GetAttack(archer), GetPrice(ARCHER));
-    printf("2. Swordsman | Health %d | ATK %d | %dG\n",GetMaximumHealth(swordsman),GetAttack(swordsman),GetPrice(SWORDSMAN));
-    printf("3. Whitemage | Health %d | ATK %d | %dG\n",GetMaximumHealth(whitemage),GetAttack(whitemage),GetPrice(WHITEMAGE));
+    printf("1. Archer | Health %d | ATK %d | %dG\n", GetMaximumHealth(ARCHER), GetAttack(ARCHER), GetPrice(ARCHER));
+    printf("2. Swordsman | Health %d | ATK %d | %dG\n",GetMaximumHealth(SWORDSMAN),GetAttack(SWORDSMAN),GetPrice(SWORDSMAN));
+    printf("3. Whitemage | Health %d | ATK %d | %dG\n",GetMaximumHealth(WHITEMAGE),GetAttack(WHITEMAGE),GetPrice(WHITEMAGE));
 }

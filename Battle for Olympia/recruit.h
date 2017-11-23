@@ -6,7 +6,7 @@
 #include "map.h"
 #include <stdlib.h>
 
-void TambahUnit (Player *P, Unit unit);
+void AddUnit (Player *P, Unit unit);
 
 void RecruitUnit (Player *P, Unit *selectedUnit);
 
@@ -14,6 +14,6 @@ void ChangeUnit (Player *P, Unit *selectedUnit);
 
 void PrintListUnits (List units);
 
-void PrintListHarga ();
+void PrintPriceList ();
 
 #endif
