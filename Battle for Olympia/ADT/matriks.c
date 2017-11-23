@@ -2,6 +2,8 @@
 
 #include "matriks.h"
 
+#include <stdlib.h>
+
 /* ********** REALISASI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk MATRIKS *** */
 MATRIKS MakeMATRIKS(int NB, int NK)
