@@ -72,6 +72,11 @@ Unit *CreateUnit(UnitClass unitClass, char color, POINT location) {
     return unit;
 }
 
+void DestroyUnit (Unit *unit)
+{
+    free(unit);
+}
+
 UnitClass GetUnitClass(Unit unit) {
     return unit.unitClass;
 }

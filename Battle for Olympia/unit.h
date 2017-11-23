@@ -32,6 +32,8 @@ const Unit WHITEMAGE;
 
 Unit *CreateUnit(UnitClass unitClass, char color, POINT location);
 
+void DestroyUnit (Unit *unit);
+
 UnitClass GetUnitClass(Unit unit);
 
 void UnitClassName(UnitClass unitClass, char unitClassName[]); 
