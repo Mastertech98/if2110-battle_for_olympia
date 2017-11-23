@@ -1,4 +1,20 @@
 #include "player.h"
+#include "unit.h"
+#include <stdlib.h>
+
+void CreatePlayer(Player *P, char color){
+    P->gold = 50;
+    CreateEmptyList(&P->units);
+    CreateEmptyList(&P->villages);
+    P->income = 2;
+    P->upkeep = 1;
+    P->color = color;
+}
+
+void InitializePlayer() {
+    CreatePlayer(&players[0], 'R');
+    CreatePlayer(&players[1], 'B');
+}
 
 Player *GetPlayer(char color) {
     for (int i = 0; i < MaxPlayer; i++) {
@@ -13,12 +29,12 @@ int GetGold(Player player) {
     return player.gold;
 }
 
-List *GetUnits(Player *player) {
-    return &(*player).units;
+List GetUnits(Player player) {
+    return player.units;
 }
 
-List *GetVillages(Player *player) {
-    return &(*player).villages;
+List GetVillages(Player player) {
+    return player.villages;
 }
 
 int GetIncome(Player player) {

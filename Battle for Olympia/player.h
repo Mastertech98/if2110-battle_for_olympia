@@ -14,22 +14,25 @@ typedef struct SPlayer {
     char color;
 } Player;
 
+/* Global Variable */
 Player players[MaxPlayer];
+
+/* Function Prototype */
+void InitializePlayer();
+void CreatePlayer(Player *P, char color);
 
 Player *GetPlayer(char color);
 
 int GetGold(Player player);
 
-List *GetUnits(Player *player);
+List GetUnits(Player player);
 
-List *GetVillages(Player *player);
+List GetVillages(Player player);
 
 int GetIncome(Player player);
-
 void SetIncome(Player *player, int income);
 
 int GetUpkeep(Player player);
-
 void SetUpkeep(Player *player, int upkeep);
 
 char GetColor(Player player);
