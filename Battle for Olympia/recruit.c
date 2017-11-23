@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void AddUnit (Player *P, Unit unit)
+void AddUnit (Player *P, Unit *unit)
 /*I.S P adalah Player yang sedang memainkan turnnya, location adalah grid dari selected unit, dan X adalah parameter untuk unit yang akan ditambah*/
 /*F.S jika X == A, maka archer akan ditambahkan ke list of units
       jika X == S, maka swordsman akan ditambahkan ke list of units
@@ -10,21 +10,9 @@ void AddUnit (Player *P, Unit unit)
 {   
     List *unitList = GetUnits(P);
 
-    SetMovementPoints(&unit,0);
-    Unit *X = (Unit *) malloc (sizeof(Unit));
-    X->unitClass = unit.unitClass;
-    X->color = unit.color;
-    X->maximumHealth = unit.maximumHealth;
-    X->health = unit.health;
-    X->attack = unit.attack;
-    X->maximumMovementPoints = unit.maximumMovementPoints;
-    X->movementPoints = unit.movementPoints;
-    X->attackType = unit.attackType;
-    X->chanceAttack = unit.chanceAttack;
-    X->location = unit.location;
-    X->price = unit.price;
-    SetUnit(GetGrid(Absis(GetLocation(unit)), Ordinat(GetLocation(unit))), X);
-    InsVLast(unitList,X);
+    SetMovementPoints(unit,0);
+    //SetUnit(GetGrid(Absis(GetLocation(*unit)), Ordinat(GetLocation(*unit))), unit);
+    InsVLast(unitList,unit);
     
 }
 
@@ -69,7 +57,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 if (GetGold(*P)>= GetPrice(ARCHER))
                                 {
                                     printf("You have recruited an Archer!\n");
-                                    Unit unit = CreateUnit(Archer, GetColor(*P), temp);
+                                    Unit *unit = CreateUnit(Archer, GetColor(*P), temp);
                                     AddUnit(P,unit);
                                 }
                                 else   
@@ -81,7 +69,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 if (GetGold(*P)>= GetPrice(SWORDSMAN))
                                 {
                                     printf("You have recruited a Swordsman!\n");
-                                    Unit unit = CreateUnit(Swordsman, GetColor(*P), temp);
+                                    Unit *unit = CreateUnit(Swordsman, GetColor(*P), temp);
                                     AddUnit(P,unit);
                                 }
                                 else   
@@ -93,7 +81,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 if (GetGold(*P)>= GetPrice(WHITEMAGE))
                                 {
                                     printf("You have recruited an whiteMage!\n");
-                                    Unit unit = CreateUnit(WhiteMage, GetColor(*P), temp);
+                                    Unit *unit = CreateUnit(WhiteMage, GetColor(*P), temp);
                                     AddUnit(P,unit);
                                 }
                                 else   

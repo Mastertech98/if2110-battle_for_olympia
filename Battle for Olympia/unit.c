@@ -54,20 +54,20 @@ const Unit WHITEMAGE = {
     .price = 10
 };
 
-Unit CreateUnit(UnitClass unitClass, char color, POINT location) {
-    Unit unit;
-
+Unit *CreateUnit(UnitClass unitClass, char color, POINT location) {
+    Unit *unit = (Unit *) malloc (sizeof(Unit));
+    
     if (unitClass == King) {
-        unit = KING;
+        *unit = KING;
     } else if (unitClass == Archer) {
-        unit = ARCHER;
+        *unit = ARCHER;
     } else if (unitClass == Swordsman) {
-        unit = SWORDSMAN;
+        *unit = SWORDSMAN;
     } else if (unitClass == WhiteMage) {
-        unit = WHITEMAGE;
+        *unit = WHITEMAGE;
     }
-    unit.color = color;
-    unit.location = location;
+    (*unit).color = color;
+    (*unit).location = location;
 
     return unit;
 }

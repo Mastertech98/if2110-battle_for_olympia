@@ -6,7 +6,7 @@
 #include "map.h"
 #include <stdlib.h>
 
-void AddUnit (Player *P, Unit unit);
+void AddUnit (Player *P, Unit *unit);
 
 void RecruitUnit (Player *P, Unit *selectedUnit);
 

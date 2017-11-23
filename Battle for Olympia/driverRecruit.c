@@ -6,6 +6,7 @@ int main()
     List units,villages;
     Player P1;
     POINT location1;
+    Unit *unitCreated;
     List *temp;
     int N,x,y;
     char type;
@@ -25,15 +26,18 @@ int main()
         location1 = MakePOINT(x,y);
         if(type =='A')
         {
-            AddUnit(&P1,CreateUnit(Archer, 0, location1));
+            unitCreated = CreateUnit(Archer, 0, location1);
+            AddUnit(&P1,unitCreated);
         }
         else if(type =='S')
         {
-            AddUnit(&P1,CreateUnit(Swordsman, 0, location1));
+            unitCreated = CreateUnit(Swordsman, 0, location1);
+            AddUnit(&P1,unitCreated);
         }
         else if(type =='W')
         {
-            AddUnit(&P1,CreateUnit(WhiteMage, 0, location1));
+            unitCreated = CreateUnit(WhiteMage, 0, location1);
+            AddUnit(&P1,unitCreated);
         }
     }
     

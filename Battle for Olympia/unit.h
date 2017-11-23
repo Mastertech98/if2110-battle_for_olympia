@@ -2,6 +2,7 @@
 #define UNIT_H
 
 #include "ADT/point.h"
+#include <stdlib.h>
 
 typedef enum EUnitClass {King = 'K', Archer = 'A', Swordsman = 'S', WhiteMage = 'W'} UnitClass;
 typedef enum EAttackType {Melee, Ranged} AttackType;
@@ -29,7 +30,7 @@ const Unit SWORDSMAN;
 
 const Unit WHITEMAGE;
 
-Unit CreateUnit(UnitClass unitClass, char color, POINT location);
+Unit *CreateUnit(UnitClass unitClass, char color, POINT location);
 
 UnitClass GetUnitClass(Unit unit);
 
