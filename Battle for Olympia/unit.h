@@ -1,6 +1,9 @@
 #ifndef UNIT_H
 #define UNIT_H
 
+#define ArcherPrice 5
+#define SwordsmanPrice 10
+#define WhiteMagePrice 20
 #include "ADT/point.h"
 
 typedef enum EUnitClass {King = 'K', Archer = 'A', Swordsman = 'S', WhiteMage = 'W'} UnitClass;
