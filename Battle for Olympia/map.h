@@ -7,28 +7,19 @@
 #include "player.h"
 #include "unit.h"
 
-typedef enum EType {Normal, Tower, Castle, Village} Type;
-
-typedef struct SGrid {
-    POINT coordinate;
-    Type type;
-    Player *owner;
-    Unit *unit;
-} Grid;
-
 typedef MATRIKS Map;
 
 Map CreateMap(int N, int M);
 
-POINT GetCoordinate(Grid grid); 
+POINT GetCoordinate(Grid grid);
 
-Type GetType(Grid grid); 
+Type GetType(Grid grid);
 
-Player *GetOwner(Grid grid); 
+Player *GetOwner(Grid grid);
 
-void SetOwner(Grid *grid, Player *owner); 
+void SetOwner(Grid *grid, Player *owner);
 
-Unit *GetUnit(Grid grid); 
+Unit *GetUnit(Grid grid);
 
 void SetUnit(Grid *grid, Unit *unit);
 
