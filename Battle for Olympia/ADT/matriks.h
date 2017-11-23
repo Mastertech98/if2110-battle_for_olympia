@@ -5,6 +5,7 @@
 
 #include "boolean.h"
 #include "point.h"
+#include <stdlib.h>
 
 #include "../player.h"
 #include "../unit.h"
