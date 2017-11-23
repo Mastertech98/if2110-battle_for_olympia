@@ -8,9 +8,11 @@
 
 #include "../player.h"
 #include "../unit.h"
-#include "../map.h"
+//#include "../map.h"
 
 typedef enum EType {Normal, Tower, Castle, Village} Type;
+
+typedef int indeks; /* indeks baris, kolom */
 
 typedef struct SGrid {
     POINT coordinate;
@@ -19,7 +21,6 @@ typedef struct SGrid {
     Unit *unit;
 } Grid;
 
-typedef int indeks; /* indeks baris, kolom */
 typedef Grid ElType;
 
 typedef struct
