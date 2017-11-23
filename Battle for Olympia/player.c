@@ -2,7 +2,10 @@
 #include "unit.h"
 #include <stdlib.h>
 
-void CreatePlayer(Player *P, char color){
+void CreatePlayer(Player *P, char color)
+/* I.S. : Sembarang */
+/* F.S. : Terbentuk player dengan warna color */
+{
     P->gold = 50;
     CreateEmptyList(&P->units);
     CreateEmptyList(&P->villages);
@@ -11,21 +14,10 @@ void CreatePlayer(Player *P, char color){
     P->color = color;
 }
 
-void InitializePlayer() {
-    CreatePlayer(&players[0], 'R');
-    CreatePlayer(&players[1], 'B');
-}
-
-void CreatePlayer(Player *P, char color){
-    P->gold = 50;
-    CreateEmptyList(&P->units);
-    CreateEmptyList(&P->villages);
-    P->income = 2;
-    P->upkeep = 1;
-    P->color = color;
-}
-
-void InitializePlayer() {
+void InitializePlayer() 
+/* I.S. : Sembarang */
+/* F.S. : Inisialisasi 2 player dengan warna merah dan biru */
+{
     CreatePlayer(&players[0], 'R');
     CreatePlayer(&players[1], 'B');
 }

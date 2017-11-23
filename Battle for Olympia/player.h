@@ -22,8 +22,14 @@ typedef struct SPlayer {
 Player players[MaxPlayer];
 
 /* Function Prototype */
-void InitializePlayer();
 void CreatePlayer(Player *P, char color);
+/* I.S. : Sembarang */
+/* F.S. : Terbentuk player dengan warna color */
+
+void InitializePlayer();
+/* I.S. : Sembarang */
+/* F.S. : Inisialisasi 2 player dengan warna merah dan biru */
+
 
 Player *GetPlayer(char color);
 /* Mengembalikan player berdasarkan warna */
