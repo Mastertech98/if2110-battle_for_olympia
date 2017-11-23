@@ -12,7 +12,7 @@ void CreateEmptyStack (Stack *S)
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 1.. MaxEl karena 0 tidak dipakai */
-/* Ciri stack kosong : TOP berNULLai NULL */
+/* Ciri stack kosong : TOP bernilai NULL */
 {   /* Kamus Lokal */
     /* Algoritma */
     Top(*S) = NULL;
