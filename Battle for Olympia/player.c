@@ -16,6 +16,20 @@ void InitializePlayer() {
     CreatePlayer(&players[1], 'B');
 }
 
+void CreatePlayer(Player *P, char color){
+    P->gold = 50;
+    CreateEmptyList(&P->units);
+    CreateEmptyList(&P->villages);
+    P->income = 2;
+    P->upkeep = 1;
+    P->color = color;
+}
+
+void InitializePlayer() {
+    CreatePlayer(&players[0], 'R');
+    CreatePlayer(&players[1], 'B');
+}
+
 Player *GetPlayer(char color) 
 /* Mengembalikan player berdasarkan warna */
 {
