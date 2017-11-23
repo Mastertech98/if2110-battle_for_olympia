@@ -2,6 +2,7 @@
 
 #include <string.h>
 
+/* Inisialisasi constant */
 const Unit KING = {
     .unitClass = King,
 
@@ -54,7 +55,9 @@ const Unit WHITEMAGE = {
     .price = 10
 };
 
-Unit *CreateUnit(UnitClass unitClass, char color, POINT location) {
+Unit *CreateUnit(UnitClass unitClass, char color, POINT location) 
+/* Mengembalikan alamat unit baru yang telah dialokasi di memory */
+{
     Unit *unit = (Unit *) malloc (sizeof(Unit));
     
     if (unitClass == King) {
@@ -73,71 +76,22 @@ Unit *CreateUnit(UnitClass unitClass, char color, POINT location) {
 }
 
 void DestroyUnit (Unit *unit)
+/* I.S. : unit terdifinisi */
+/* F.S. : memory yang digunakan unit dikembalikan ke sistem */ 
 {
     free(unit);
 }
 
-UnitClass GetUnitClass(Unit unit) {
+UnitClass GetUnitClass(Unit unit) 
+/* Mengembalikan UnitClass dari sebuah unit */
+{
     return unit.unitClass;
 }
 
-char GetUnitColor(Unit unit) {
-    return unit.color;
-}
-
-int GetMaximumHealth(Unit unit) {
-    return unit.maximumHealth;
-}
-
-int GetHealth(Unit unit) {
-    return unit.health;
-}
-
-void SetHealth(Unit *unit, int health) {
-    unit->health = health;
-}
-
-int GetAttack(Unit unit) {
-    return unit.attack;
-}
-
-int GetMaximumMovementPoints(Unit unit) {
-    return unit.maximumMovementPoints;
-}
-
-int GetMovementPoints(Unit unit) {
-    return unit.movementPoints;
-}
-
-void SetMovementPoints(Unit *unit, int movementPoints) {
-    unit->movementPoints = movementPoints;
-}
-
-AttackType GetAttackType(Unit unit) {
-    return unit.attackType;
-}
-
-boolean GetChanceAttack(Unit unit) {
-    return unit.chanceAttack;
-}
-
-void SetChanceAttack(Unit *unit, boolean chanceAttack) {
-    unit->chanceAttack = chanceAttack;
-}
-
-POINT GetLocation(Unit unit) {
-    return unit.location;
-}
-
-void SetLocation(Unit *unit, POINT location) {
-    unit->location = location;
-}
-
-int GetPrice(Unit unit) {
-    return unit.price;
-}
-
-void UnitClassName(UnitClass unitClass, char unitClassName[]) {
+void UnitClassName(UnitClass unitClass, char unitClassName[]) 
+/* I.S. : sembarang */
+/* F.S. : unitClassName adalah unitClassName dari unitClass */
+{
     if (unitClass == King) {
         strcpy(unitClassName, "King");
     } else if (unitClass == Archer) {
@@ -151,7 +105,10 @@ void UnitClassName(UnitClass unitClass, char unitClassName[]) {
     }
 }
 
-boolean Retaliates(Unit attacked, Unit attacker) {
+boolean Retaliates(Unit attacked, Unit attacker) 
+/* Mengembalikan apakah unit tersebut melakukan retaliates atau tidak */
+/* true jika melakukan false jika tidak */
+{
     if (GetAttackType(attacked) == GetAttackType(attacker)) {
         if (GetAttack(attacked) >= GetHealth(attacker)) {
             return true;
@@ -164,3 +121,92 @@ boolean Retaliates(Unit attacked, Unit attacker) {
         return false;
     }
 }
+
+char GetUnitColor(Unit unit) 
+/* Mengembalikan warna dari sebuah unit */
+{
+    return unit.color;
+}
+
+int GetMaximumHealth(Unit unit) 
+/* Mengembalikan maximumHealth dari sebuah unit */
+{
+    return unit.maximumHealth;
+}
+
+int GetHealth(Unit unit) 
+/* Mengembalikan health yang dimimliki unit */
+{
+    return unit.health;
+}
+
+void SetHealth(Unit *unit, int health) 
+/* I.S. = Unit terdefinisi dan health adalah health yang akan dimasukkan */
+/* F.S. = Health dari unit akan menjadi parameter input health */
+{
+    unit->health = health;
+}
+
+int GetAttack(Unit unit) 
+/* Mengembalikan attribut attack unit */
+{
+    return unit.attack;
+}
+
+int GetMaximumMovementPoints(Unit unit) 
+/* Mengembalikan atribut maximum movement points dari unit */
+{
+    return unit.maximumMovementPoints;
+}
+
+int GetMovementPoints(Unit unit) 
+/* Mengembalikan movement points yang dimiliki unit */
+{
+    return unit.movementPoints;
+}
+
+void SetMovementPoints(Unit *unit, int movementPoints) 
+/* I.S. : unit terdefinisi */
+/* F.S. : movementPoints yang dimiliki unit akan diset dengan parameter input */
+{
+    unit->movementPoints = movementPoints;
+}
+
+AttackType GetAttackType(Unit unit) 
+/* Mengembalikan attack type dari unit */
+{
+    return unit.attackType;
+}
+
+boolean GetChanceAttack(Unit unit) 
+/* Mengembalikan true jika unit bisa melakukan attack dan false jika tidak bisa */
+{
+    return unit.chanceAttack;
+}
+
+void SetChanceAttack(Unit *unit, boolean chanceAttack) 
+/* I.S. : unit terdefinisi */
+/* F.S. : ChanceAttack unit akan diset dengan parameter input chanceAttack */
+{
+    unit->chanceAttack = chanceAttack;
+}
+
+POINT GetLocation(Unit unit) 
+/* Mengembalikan location dari unit dalam tipe bentukan point */
+{
+    return unit.location;
+}
+
+void SetLocation(Unit *unit, POINT location) 
+/* I.S. : Unit terdefinisi */
+/* F.S. : Location dari unit akan diset dengan parameter input location */
+{
+    unit->location = location;
+}
+
+int GetPrice(Unit unit) 
+/* Mengembalikan price dari unit */
+{
+    return unit.price;
+}
+

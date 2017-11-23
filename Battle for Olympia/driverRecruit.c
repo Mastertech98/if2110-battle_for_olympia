@@ -7,7 +7,7 @@ int main()
     Player P1;
     POINT location1;
     Unit *unitCreated;
-    List *temp;
+    List temp;
     int N,x,y;
     char type;
     
@@ -45,8 +45,8 @@ int main()
     //TambahUnit(&P1,unit2);
     /*Unit unit3 = CreateUnit(WhiteMage, GetColor(P1), location3);
     TambahUnit(&P1,unit3);*/
-    temp = GetUnits(&P1);
-    PrintListUnits(*temp);
+    temp = GetUnits(P1);
+    PrintListUnits(temp);
 
     PrintPriceList();
 

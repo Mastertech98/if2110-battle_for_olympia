@@ -8,12 +8,12 @@ void AddUnit (Player *P, Unit *unit)
       jika X == S, maka swordsman akan ditambahkan ke list of units
       jika X == W, maka whitemage akan ditambahkan ke list of units*/
 {   
-    List *unitList = GetUnits(P);
+    List unitList = GetUnits(*P);
 
     SetMovementPoints(unit,0);
     //SetUnit(GetGrid(Absis(GetLocation(*unit)), Ordinat(GetLocation(*unit))), unit);
-    InsVLast(unitList,unit);
-    
+    InsVLast(&unitList,unit);
+    P->units = unitList;
 }
 
 void RecruitUnit (Player *P, Unit *selectedUnit)
@@ -115,19 +115,19 @@ void ChangeUnit (Player *P, Unit *selectedUnit)
     /*I.S. P adalah player yang sedang memainkan turnnya, selectedUnit adalah unit yang sedang dipilih pada saat ini*/
     /*F.S. selectedUnit akan berganti sesuai dengan pilihan player*/
     int choice,i;
-    List *units;
+    List units;
     address pt;
 
-    units = GetUnits(P);
+    units = GetUnits(*P);
     printf("== List of Units ==\n");
-    PrintListUnits(*units);
+    PrintListUnits(units);
     printf("Please enter the no. of unit you want to select: ");
     scanf("%d",&choice);
-    if (choice > NbElmt(*units) || choice < 1)
+    if (choice > NbElmt(units) || choice < 1)
         {printf("salah woy!\n");
         return;
     }
-    pt = First(*units);
+    pt = First(units);
     for (i=1; i<=choice; i++)
         pt = Next(pt);
     selectedUnit = Info(pt);
