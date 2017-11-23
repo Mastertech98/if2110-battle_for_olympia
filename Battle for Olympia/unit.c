@@ -1,4 +1,5 @@
 #include "unit.h"
+#include "player.h"
 
 #include <string.h>
 
@@ -210,3 +211,10 @@ int GetPrice(Unit unit)
     return unit.price;
 }
 
+Player *GetPlayerFromColor (Unit unit){
+	if(GetColor(players[0]) == GetUnitColor(unit)){
+		return &players[0];
+	} else if(GetColor(players[1]) == GetUnitColor(unit)){
+		return &players[1];
+	}
+}

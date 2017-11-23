@@ -6,6 +6,8 @@
 #define UNIT_H
 
 #include "ADT/point.h"
+#include "player.h"
+
 #include <stdlib.h>
 
 typedef enum EUnitClass {King = 'K', Archer = 'A', Swordsman = 'S', WhiteMage = 'W'} UnitClass;
@@ -99,4 +101,5 @@ void SetLocation(Unit *unit, POINT location);
 int GetPrice(Unit unit); 
 /* Mengembalikan price dari unit */
 
+Player *GetPlayerFromColor (Unit unit);
 #endif

@@ -1,24 +1,41 @@
 #include "map.h"
+#include "ADT/matriks.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
-const Grid EMPTYGRID {
-    .coordinate.X = 0;
-    .coordinate.Y = 0;
-    .type = Normal;
-    .owner = NULL;
-    .unit = NULL;
-}
+const Grid VillageGrid = {
+	.coordinate.X = 0,
+    .coordinate.Y = 0,
+    .type = Village,
+    .owner = NULL,
+    .unit = NULL,
+};
+
+
+
+const Grid EMPTYGRID = {
+    .coordinate.X = 0,
+    .coordinate.Y = 0,
+    .type = Normal,
+    .owner = NULL,
+    .unit = NULL,
+};
 
 Map map;
 
 void CreateMap(int N, int M)
 {
+	int i;
 	MakeMATRIKS(&map,N,M);
 	
-	for(int i=0; i<NB*NK; i++){
-		map.Mem[i] = EMPTYGRID;
-		printf("%d",map.Mem[i].x);
+	for(i=0; i<N*M; i++){
+		if(i!=2){
+			map.Mem[i] = EMPTYGRID;
+		}else{
+			map.Mem[i] = VillageGrid;
+		}
+		//printf("%d",map.Mem[i].coordinate.X);
 	}
 }
 
