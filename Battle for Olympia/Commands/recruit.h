@@ -6,7 +6,7 @@
 
 void RecruitUnit (Player *P, Unit *selectedUnit);
 
-void ChangeUnit (Player *P, Unit *selectedUnit);
+void ChangeUnit (Player *P, Unit **selectedUnit);
 
 void PrintListUnits (List units);
 

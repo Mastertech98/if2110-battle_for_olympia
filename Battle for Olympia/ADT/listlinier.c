@@ -50,6 +50,17 @@ void Dealokasi(address *P)
 }
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
+address SearchbyChoice (List L, int choice)
+/* Mengembalikan address dari iterasi ke-choice */
+{
+    address Pt;
+    
+    Pt = First(L);
+    for (int i=1; i<choice; i++)
+        Pt = Next(Pt);
+    return Pt;
+}
+
 address Search(List L, infotype X)
 /* Mencari apakah ada elemen list dengan Info(P)=X */
 /* Jika ada, mengirimkan address elemen tersebut. */

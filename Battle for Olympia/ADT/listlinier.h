@@ -49,6 +49,8 @@ void Dealokasi (address *P);
 /* Melakukan dealokasi/pengembalian address P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
+address SearchbyChoice (List L, int choice);
+/* Mengembalikan address dari iterasi ke-choice */
 address Search (List L, infotype X);
 /* Mencari apakah ada elemen list dengan Info(P)= X */
 /* Jika ada, mengirimkan address elemen tersebut. */
