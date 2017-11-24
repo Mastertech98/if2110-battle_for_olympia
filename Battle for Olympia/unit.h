@@ -9,7 +9,13 @@
 
 #include <stdlib.h>
 
-typedef enum EUnitClass {King = 'K', Archer = 'A', Swordsman = 'S', WhiteMage = 'W', Movement = '#'} UnitClass;
+typedef enum EUnitClass {
+    King = 'K', 
+    Archer = 'A', 
+    Swordsman = 'S', 
+    WhiteMage = 'W',
+    Movement = '#'
+} UnitClass;
 typedef enum EAttackType {Melee, Ranged} AttackType;
 
 typedef struct SUnit {

@@ -47,7 +47,7 @@ Grid *GetGrid(int x, int y)
 
 char GetGridColor(Grid grid)
 {
-    return GetColor(*grid.owner);
+    return GetColor(*GetOwner(grid));
 }
 
 POINT GetCoordinate(Grid grid)
@@ -62,7 +62,7 @@ Type GetType(Grid grid)
 
 Player *GetOwner(Grid grid)
 {
-    return grid.owner;
+    return (Player*)grid.owner;
 }
 
 void SetOwner(Grid *grid, Player *owner)
@@ -72,7 +72,7 @@ void SetOwner(Grid *grid, Player *owner)
 
 Unit *GetUnit(Grid grid)
 {
-    return grid.unit;
+    return (Unit*)grid.unit;
 }
 
 void SetUnit(Grid *grid, Unit *unit)

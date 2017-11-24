@@ -1,7 +1,6 @@
 /* ********** Realisasi TYPE MATRIKS dengan indeks dan elemen integer ********** */
 
 #include "matriks.h"
-#include "../map.h"
 
 #include <stdlib.h>
 
@@ -23,9 +22,6 @@ int N(MATRIKS M) {
 }
 int M(MATRIKS M) {
     return M.M;
-}
-ElType Elmt(MATRIKS M, indeks i, indeks j) {
-    return M.Mem[GetMapSizeM() * j + i];
 }
 
 /* *** Selektor: Untuk sebuah matriks M yang terdefinisi: *** */

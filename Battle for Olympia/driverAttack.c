@@ -3,9 +3,10 @@
 
 int main() {
     CreateMap(4,4);
-    map.Mem[2,2].type = Tower;
 
-    InitializePlayer();
+
+
+    
 
     Unit *attacker = CreateUnit(King, 'R', MakePOINT(2,2));
     

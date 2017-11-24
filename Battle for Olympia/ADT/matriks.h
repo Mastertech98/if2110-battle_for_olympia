@@ -5,11 +5,17 @@
 
 #include "boolean.h"
 #include "point.h"
-#include <stdlib.h>
 
 typedef int indeks; /* indeks baris, kolom */
 
-typedef struct SGrid Grid;
+typedef enum EType {Normal, Tower, Castle, Village} Type;
+
+typedef struct SGrid {
+    POINT coordinate;
+    Type type;
+    void *owner;
+    void *unit;
+} Grid;
 
 typedef Grid ElType;
 
