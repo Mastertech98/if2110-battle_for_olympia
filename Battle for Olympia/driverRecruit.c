@@ -51,10 +51,10 @@ int main()
         }
     }
     printf("hai\n");
-    ChangeUnit (&P1, selectedUnit);
+    ChangeUnit (&P1, &selectedUnit);
 
     UnitClassName(GetUnitClass(*selectedUnit), unitname);
-    printf("%s", unitname);
+    printf("%s\n", unitname);
     PrintPriceList();
 
     return 0;
