@@ -6,6 +6,7 @@
 #define PLAYER_H
 
 #include "ADT/listlinier.h"
+#include "ADT/matriks.h"
 #include "unit.h"
 
 #define MaxPlayer 2
@@ -23,7 +24,7 @@ typedef struct SPlayer {
 Player players[MaxPlayer];
 
 /* Function Prototype */
-void CreatePlayer(Player *P, char color);
+void CreatePlayer(Player *P, char color, POINT coordinate);
 /* I.S. : Sembarang */
 /* F.S. : Terbentuk player dengan warna color */
 
@@ -49,6 +50,9 @@ void DelUnit(Player *P, Unit *unit);
 
 List GetVillages(Player player);
 /* Mengembalikan list dari village yang dimiliki player */
+
+void AddVillage(Player *P, Grid *grid);
+void DelVillage(Player *P, Grid *grid);
 
 int GetIncome(Player player);
 /* Mengebmalikan income dari player */

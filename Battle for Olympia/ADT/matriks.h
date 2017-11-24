@@ -7,19 +7,9 @@
 #include "point.h"
 #include <stdlib.h>
 
-#include "../player.h"
-#include "../unit.h"
-
-typedef enum EType {Normal, Tower, Castle, Village} Type;
-
 typedef int indeks; /* indeks baris, kolom */
 
-typedef struct SGrid {
-    POINT coordinate;
-    Type type;
-    Player *owner;
-    Unit *unit;
-} Grid;
+typedef struct SGrid Grid;
 
 typedef Grid ElType;
 

@@ -7,6 +7,15 @@
 #include "player.h"
 #include "unit.h"
 
+typedef enum EType {Normal, Tower, Castle, Village} Type;
+
+typedef struct SGrid {
+    POINT coordinate;
+    Type type;
+    Player *owner;
+    Unit *unit;
+} Grid;
+
 typedef MATRIKS Map;
 
 extern Map map;

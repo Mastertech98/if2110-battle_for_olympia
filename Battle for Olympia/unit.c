@@ -1,5 +1,4 @@
 #include "unit.h"
-#include "player.h"
 
 #include <string.h>
 
@@ -16,7 +15,6 @@ const Unit KING = {
     .chanceAttack = true,
     .price = 0
 };
-
 const Unit ARCHER = {
     .unitClass = Archer,
 
@@ -29,7 +27,6 @@ const Unit ARCHER = {
     .chanceAttack = true,
     .price = 8
 };
-
 const Unit SWORDSMAN = {
     .unitClass = Swordsman,
 
@@ -42,7 +39,6 @@ const Unit SWORDSMAN = {
     .chanceAttack = true,
     .price = 8
 };
-
 const Unit WHITEMAGE = {
     .unitClass = WhiteMage,
 

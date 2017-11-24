@@ -2,30 +2,32 @@
 
 #include <stdlib.h>
 
-void CreatePlayer(Player *P, char color)
+void CreatePlayer(Player *P, char color, POINT coordinate)
 /* I.S. : Sembarang */
 /* F.S. : Terbentuk player dengan warna color */
 {
-    P->gold = 50;
+    SetGold(P, 50);
     CreateEmptyList(&P->units);
+    AddUnit(P, CreateUnit(King, color, coordinate));
     CreateEmptyList(&P->villages);
-    P->income = 2;
-    P->upkeep = 1;
+    SetIncome(P, 2);
+    SetUpkeep(P, 1);
     P->color = color;
 }
 
-void InitializePlayer() 
+void InitializePlayer(int n, char *colors, POINT *coordinates) 
 /* I.S. : Sembarang */
 /* F.S. : Inisialisasi 2 player dengan warna merah dan biru */
 {
-    CreatePlayer(&players[0], 'R');
-    CreatePlayer(&players[1], 'B');
+    for (int i = 0; i < n; ++i) {
+        CreatePlayer(&players[i], colors[i], coordinates[i]);
+    }
 }
 
 Player *GetPlayer(char color) 
 /* Mengembalikan player berdasarkan warna */
 {
-    for (int i = 0; i < MaxPlayer; i++) {
+    for (int i = 0; i < MaxPlayer; ++i) {
         if (GetColor(players[i]) == color) {
             return &players[i];
         }
@@ -52,19 +54,30 @@ List GetUnits(Player player)
     return player.units;
 }
 
-void AddUnit (Player *P, Unit *unit)
-/*I.S P adalah Player yang sedang memainkan turnnya, location adalah grid dari selected unit, dan X adalah parameter untuk unit yang akan ditambah*/
-/*F.S jika X == A, maka archer akan ditambahkan ke list of units
-      jika X == S, maka swordsman akan ditambahkan ke list of units
-      jika X == W, maka whitemage akan ditambahkan ke list of units*/
+void AddUnit(Player *P, Unit *unit)
 {   
     InsVLast(&P->units, unit);
+}
+
+void DelUnit(Player *P, Unit *unit)
+{
+    DelP(&P->units, unit);
 }
 
 List GetVillages(Player player) 
 /* Mengembalikan list dari village yang dimiliki player */
 {
     return player.villages;
+}
+
+void AddVillage(Player *P, Grid *grid)
+{   
+    InsVLast(&P->villages, grid);
+}
+
+void DelVillage(Player *P, Grid *grid)
+{
+    DelP(&P->villages, grid);
 }
 
 int GetIncome(Player player) 
