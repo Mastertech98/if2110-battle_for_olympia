@@ -1,4 +1,5 @@
 #include "player.h"
+#include "map.h"
 
 #include <stdlib.h>
 
@@ -15,11 +16,11 @@ void CreatePlayer(Player *P, char color, POINT coordinate)
     P->color = color;
 }
 
-void InitializePlayer(int n, char *colors, POINT *coordinates) 
+void InitializePlayer(int numberOfPlayers, char *colors, POINT *coordinates) 
 /* I.S. : Sembarang */
 /* F.S. : Inisialisasi 2 player dengan warna merah dan biru */
 {
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < numberOfPlayers; ++i) {
         CreatePlayer(&players[i], colors[i], coordinates[i]);
     }
 }

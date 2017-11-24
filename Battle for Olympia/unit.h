@@ -35,13 +35,11 @@ typedef struct SUnit {
 
 /* Deklarasi Konstanta unit-unit untuk implementasi beberapa fungsi */
 const Unit KING;
-
 const Unit ARCHER;
-
 const Unit SWORDSMAN;
-
 const Unit WHITEMAGE;
 
+/******** CONSTRUCTOR/DESTRUCTOR ********/
 Unit *CreateUnit(UnitClass unitClass, char color, POINT location);
 /* Mengembalikan alamat unit baru yang telah dialokasi di memory */
 
@@ -49,16 +47,9 @@ void DestroyUnit (Unit *unit);
 /* I.S. : unit terdifinisi */
 /* F.S. : memory yang digunakan unit dikembalikan ke sistem */ 
 
+/******** SELECTOR ********/
 UnitClass GetUnitClass(Unit unit);
 /* Mengembalikan UnitClass dari sebuah unit */
-
-void UnitClassName(UnitClass unitClass, char unitClassName[]); 
-/* I.S. : sembarang */
-/* F.S. : unitClassName adalah unitClassName dari unitClass */
-
-boolean Retaliates(Unit attacked, Unit attacker); 
-/* Mengembalikan apakah unit tersebut melakukan retaliates atau tidak */
-/* true jika melakukan false jika tidak */
 
 char GetUnitColor(Unit unit);
 /* Mengembalikan warna dari sebuah unit */
@@ -105,5 +96,14 @@ void SetLocation(Unit *unit, POINT location);
 
 int GetPrice(Unit unit); 
 /* Mengembalikan price dari unit */
+
+/******** OTHER ********/
+void UnitClassName(UnitClass unitClass, char unitClassName[]); 
+/* I.S. : sembarang */
+/* F.S. : unitClassName adalah unitClassName dari unitClass */
+
+boolean Retaliates(Unit attacked, Unit attacker); 
+/* Mengembalikan apakah unit tersebut melakukan retaliates atau tidak */
+/* true jika melakukan false jika tidak */
 
 #endif

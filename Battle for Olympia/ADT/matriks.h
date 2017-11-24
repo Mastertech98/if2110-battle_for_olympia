@@ -8,7 +8,7 @@
 
 typedef int indeks; /* indeks baris, kolom */
 
-typedef enum EType {Normal, Tower, Castle, Village} Type;
+typedef enum EType {Normal = ' ', Tower = 'T', Castle = 'C', Village = 'V'} Type;
 
 typedef struct SGrid {
     POINT coordinate;
@@ -19,8 +19,7 @@ typedef struct SGrid {
 
 typedef Grid ElType;
 
-typedef struct
-{
+typedef struct {
     ElType *Mem;
     int N; /* banyaknya/ukuran baris yg terdefinisi */
     int M; /* banyaknya/ukuran kolom yg terdefinisi */

@@ -2,20 +2,14 @@
 #define MAP_H
 
 #include "ADT/point.h"
-#include "ADT/matriks.h"
 
 #include "player.h"
 #include "unit.h"
 
 typedef MATRIKS Map;
 
-extern Map map;
-
-const Grid EMPTY_GRID;
-const Grid VILLAGE_GRID;
-
 /* Function Prototype */
-void CreateMap(int N, int M);
+void CreateMap(int N, int M, int numberOfPlayers, char *colors, POINT *coordinates);
 
 Grid *GetGrid(int x, int y);
 char GetGridColor(Grid grid);

@@ -1,43 +1,50 @@
 #include "map.h"
+
 #include "ADT/matriks.h"
-
-#include <stdlib.h>
-#include <stdio.h>
-
-const Grid VILLAGE_GRID = {
-    .coordinate.X = 0,
-    .coordinate.Y = 0,
-    .type = Village,
-    .owner = NULL,
-    .unit = NULL,
-};
-
-const Grid EMPTY_GRID = {
-    .coordinate.X = 0,
-    .coordinate.Y = 0,
-    .type = Normal,
-    .owner = NULL,
-    .unit = NULL,
-};
 
 Map map;
 
-void CreateMap(int N, int M)
+void CreateMap(int N, int M, int numberOfPlayers, char *colors, POINT *coordinates)
 {
-    int i;
     MakeMATRIKS(&map, N, M);
 
-    for (i = 0; i < N * M; i++)
-    {
-        if (i != 2)
-        {
-            map.Mem[i] = EMPTY_GRID;
-        }
-        else
-        {
-            map.Mem[i] = VILLAGE_GRID;
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            Grid *grid = GetGrid(i, j);
+            grid->coordinate = MakePOINT(i, j);
+            grid->type = Normal;
+            SetOwner(grid, NULL);
+            SetUnit(grid, NULL);
         }
     }
+
+    for (int i = 0; i < numberOfPlayers; ++i) {
+        Player *player = GetPlayer(colors[i]);
+        int x = coordinates[i].X;
+        int y = coordinates[i].Y;
+        Grid *grid = GetGrid(x, y);
+
+        grid->type = Tower;
+        SetOwner(grid, player);
+        
+        grid = GetGrid(x, y-1);
+        grid->type = Castle;
+        SetOwner(grid, player);
+        
+        grid = GetGrid(x, y+1);
+        grid->type = Castle;
+        SetOwner(grid, player);
+        
+        grid = GetGrid(x-1, y);
+        grid->type = Castle;
+        SetOwner(grid, player);
+        
+        grid = GetGrid(x+1, y);
+        grid->type = Castle;
+        SetOwner(grid, player);
+    }
+
+    // Randomize village
 }
 
 Grid *GetGrid(int x, int y)
