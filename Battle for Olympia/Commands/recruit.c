@@ -7,6 +7,7 @@ void RecruitUnit (Player *P, Unit *selectedUnit)
 /*F.S. Jika selectedunit adalah king, player memilih petak yang castle miliknya, dan gold mencukupi
 maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang dipilih.*/
 {
+    Player *owner;
     Grid *KingLoc;
     Grid *CastleLoc;
     POINT temp;
@@ -24,7 +25,8 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
             scanf("%d %d",&x,&y);
             temp = MakePOINT(x,y);
             CastleLoc = GetGrid(x,y);
-            if (GetOwner(*CastleLoc)==P)
+            owner = GetOwner(*CastleLoc);
+            if (owner == P)
             {
                 if (GetUnitClass(*GetUnit(*CastleLoc))==Archer || GetUnitClass(*GetUnit(*CastleLoc))==Swordsman || GetUnitClass(*GetUnit(*CastleLoc))==WhiteMage)
                 {
