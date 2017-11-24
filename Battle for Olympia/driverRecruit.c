@@ -6,7 +6,9 @@ int main()
     List units,villages;
     Player P1;
     POINT location1;
+    char unitname[12];
     Unit *unitCreated;
+    Unit *selectedUnit;
     List temp;
     int N,x,y;
     char type;
@@ -17,8 +19,16 @@ int main()
     P1.units = units;
     P1.villages= villages;
     P1.income = 10;
-    P1.upkeep = 10;   
-     
+    P1.upkeep = 10; 
+    P1.color = 'R';   
+    
+    location1 = MakePOINT(1,1);
+    unitCreated = CreateUnit(King, 0, location1);
+    selectedUnit = unitCreated;
+    AddUnit(&P1, unitCreated);
+    PrintListUnits(GetUnits(P1));
+    //RecruitUnit(&P1, selectedUnit);
+
     scanf("%d", &N);
     for (int i = 1; i<=N; i++)
     {
@@ -26,28 +36,25 @@ int main()
         location1 = MakePOINT(x,y);
         if(type =='A')
         {
-            unitCreated = CreateUnit(Archer, 0, location1);
+            unitCreated = CreateUnit(Archer, 'R', location1);
             AddUnit(&P1,unitCreated);
         }
         else if(type =='S')
         {
-            unitCreated = CreateUnit(Swordsman, 0, location1);
+            unitCreated = CreateUnit(Swordsman, 'R', location1);
             AddUnit(&P1,unitCreated);
         }
         else if(type =='W')
         {
-            unitCreated = CreateUnit(WhiteMage, 0, location1);
+            unitCreated = CreateUnit(WhiteMage, 'R', location1);
             AddUnit(&P1,unitCreated);
         }
     }
-    
-    //Unit unit2 = CreateUnit(Swordsman, 0, location2);
-    //TambahUnit(&P1,unit2);
-    /*Unit unit3 = CreateUnit(WhiteMage, GetColor(P1), location3);
-    TambahUnit(&P1,unit3);*/
-    temp = GetUnits(P1);
-    PrintListUnits(temp);
+    printf("hai\n");
+    ChangeUnit (&P1, selectedUnit);
 
+    UnitClassName(GetUnitClass(*selectedUnit), unitname);
+    printf("%s", unitname);
     PrintPriceList();
 
     return 0;

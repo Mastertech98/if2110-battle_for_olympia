@@ -13,89 +13,87 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
     int x,y,i;
     boolean done;
 
-    if (GetUnitClass(*selectedUnit)== King)
+    temp = GetLocation(*selectedUnit);
+    KingLoc = GetGrid(Absis(temp), Ordinat(temp));
+    if (GetType(*KingLoc)==Tower)
     {
-        temp = GetLocation(*selectedUnit);
-        KingLoc = GetGrid(Absis(temp), Ordinat(temp));
-        if (GetType(*KingLoc)==Tower)
+        done = false;
+        do
         {
-            done = false;
-            do
+            printf("Enter the coordinate of empty castle: ");
+            scanf("%d %d",&x,&y);
+            temp = MakePOINT(x,y);
+            CastleLoc = GetGrid(x,y);
+            if (GetOwner(*CastleLoc)==P)
             {
-                printf("Enter the coordinate of empty castle: ");
-                scanf("%d %d",&x,&y);
-                temp = MakePOINT(x,y);
-                CastleLoc = GetGrid(x,y);
-                if (GetOwner(*CastleLoc)==P)
+                if (GetUnitClass(*GetUnit(*CastleLoc))==Archer || GetUnitClass(*GetUnit(*CastleLoc))==Swordsman || GetUnitClass(*GetUnit(*CastleLoc))==WhiteMage)
                 {
-                    if (GetUnitClass(*GetUnit(*CastleLoc))==Archer || GetUnitClass(*GetUnit(*CastleLoc))==Swordsman || GetUnitClass(*GetUnit(*CastleLoc))==WhiteMage)
-                    {
-                        printf("Sorry, that castle is occupied\n");
-                    }
-                    else
-                    {
-                        PrintPriceList();
-                        printf("Enter no. of unit you want to recruit: ");
-                        scanf("%d",&i);
-                        switch (i){
-                            case 1:
-                            {
-                                if (GetGold(*P)>= GetPrice(ARCHER))
-                                {
-                                    printf("You have recruited an Archer!\n");
-                                    Unit *unit = CreateUnit(Archer, GetColor(*P), temp);
-                                    SetMovementPoints(unit,0);
-                                    AddUnit(P,unit);
-                                }
-                                else   
-                                    printf("You don't have enough money");
-                                break;
-                            }
-                            case 2:
-                            {
-                                if (GetGold(*P)>= GetPrice(SWORDSMAN))
-                                {
-                                    printf("You have recruited a Swordsman!\n");
-                                    Unit *unit = CreateUnit(Swordsman, GetColor(*P), temp);
-                                    SetMovementPoints(unit,0);
-                                    AddUnit(P,unit);
-                                }
-                                else   
-                                    printf("You don't have enough money");
-                                break;
-                            }
-                            case 3:
-                            {
-                                if (GetGold(*P)>= GetPrice(WHITEMAGE))
-                                {
-                                    printf("You have recruited an whiteMage!\n");
-                                    Unit *unit = CreateUnit(WhiteMage, GetColor(*P), temp);
-                                    SetMovementPoints(unit,0);
-                                    AddUnit(P,unit);
-                                }
-                                else   
-                                    printf("You don't have enough money");
-                                break;
-                            }
-                            default:
-                                printf("You don't select from the choices");
-                        }
-                    }
+                    printf("Sorry, that castle is occupied\n");
                 }
                 else
                 {
-                    printf("Sorry, that castle isn't yours\n");
+                    PrintPriceList();
+                    printf("Enter no. of unit you want to recruit: ");
+                    scanf("%d",&i);
+                    switch (i){
+                        case 1:
+                        {
+                            if (GetGold(*P)>= GetPrice(ARCHER))
+                            {
+                                printf("You have recruited an Archer!\n");
+                                Unit *unit = CreateUnit(Archer, GetColor(*P), temp);
+                                SetMovementPoints(unit,0);
+                                SetUnit(CastleLoc, unit);
+                                AddUnit(P,unit);
+                            }
+                            else   
+                                printf("You don't have enough money");
+                            break;
+                        }
+                        case 2:
+                        {
+                            if (GetGold(*P)>= GetPrice(SWORDSMAN))
+                            {
+                                printf("You have recruited a Swordsman!\n");
+                                Unit *unit = CreateUnit(Swordsman, GetColor(*P), temp);
+                                SetMovementPoints(unit,0);
+                                SetUnit(CastleLoc, unit);
+                                AddUnit(P,unit);
+                            }
+                            else   
+                                printf("You don't have enough money");
+                            break;
+                        }
+                        case 3:
+                        {
+                            if (GetGold(*P)>= GetPrice(WHITEMAGE))
+                            {
+                                printf("You have recruited an whiteMage!\n");
+                                Unit *unit = CreateUnit(WhiteMage, GetColor(*P), temp);
+                                SetMovementPoints(unit,0);
+                                SetUnit(CastleLoc, unit);
+                                AddUnit(P,unit);
+                            }
+                            else   
+                                printf("You don't have enough money");
+                            break;
+                        }
+                        default:
+                            printf("You don't select from the choices");
+                    }
+
                 }
-            }while (!done);
-        }
-        else
-        {
-            printf("Sorry, your king is not in the tower, you can't recruit any unit.\n");
-        }
+                done = true;
+            }
+            else
+            {
+                printf("Sorry, that castle isn't yours\n");
+            }
+        }while (!done);
     }
     else
     {
-        printf("You don't select the king, please select the king before recruiting unit.\n");
+        printf("Sorry, your king is not in the tower, you can't recruit any unit.\n");
     }
 }
 
@@ -113,13 +111,17 @@ void ChangeUnit (Player *P, Unit *selectedUnit)
     printf("Please enter the no. of unit you want to select: ");
     scanf("%d",&choice);
     if (choice > NbElmt(units) || choice < 1)
-        {printf("salah woy!\n");
-        return;
+    {
+        printf("salah woy!\n");
     }
-    pt = First(units);
-    for (i=1; i<=choice; i++)
-        pt = Next(pt);
-    selectedUnit = Info(pt);
+    else
+    {
+        printf("hai\n");
+        pt = First(units);
+        for (i=1; i<=choice; i++)
+            pt = Next(pt);
+        selectedUnit = Info(pt);
+    }
 }
 
 void PrintListUnits(List units)
