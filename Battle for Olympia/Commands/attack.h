@@ -1,9 +1,7 @@
 #ifndef ATTACK_H
 #define ATTACK_H
 
-#include "unit.h"
-#include "map.h"
-#include "player.h"
+#include "../corefiles.h"
 
 typedef struct {
     Unit *enemy[4];

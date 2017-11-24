@@ -6,7 +6,6 @@
 #define UNIT_H
 
 #include "ADT/point.h"
-#include "player.h"
 
 #include <stdlib.h>
 

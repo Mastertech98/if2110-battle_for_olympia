@@ -44,7 +44,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 {
                                     printf("You have recruited an Archer!\n");
                                     Unit *unit = CreateUnit(Archer, GetColor(*P), temp);
-                                    SetMovementPoints(unit, 0);
+                                    SetMovementPoints(unit,0);
                                     AddUnit(P,unit);
                                 }
                                 else   
@@ -57,7 +57,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 {
                                     printf("You have recruited a Swordsman!\n");
                                     Unit *unit = CreateUnit(Swordsman, GetColor(*P), temp);
-                                    SetMovementPoints(unit, 0);
+                                    SetMovementPoints(unit,0);
                                     AddUnit(P,unit);
                                 }
                                 else   
@@ -70,7 +70,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                 {
                                     printf("You have recruited an whiteMage!\n");
                                     Unit *unit = CreateUnit(WhiteMage, GetColor(*P), temp);
-                                    SetMovementPoints(unit, 0);
+                                    SetMovementPoints(unit,0);
                                     AddUnit(P,unit);
                                 }
                                 else   

@@ -1,12 +1,8 @@
 #ifndef MOVE_H
 #define MOVE_H
 
-//#include "ADT/stack.h"
-
-#include "unit.h"
-#include "map.h"
-#include "player.h"
-#include "ADT/stackt.h"
+#include "../corefiles.h"
+#include "../ADT/stackt.h"
 
 #define DUMVAL 999
 

@@ -6,7 +6,6 @@
 #define PLAYER_H
 
 #include "ADT/listlinier.h"
-
 #include "unit.h"
 
 #define MaxPlayer 2
@@ -21,7 +20,7 @@ typedef struct SPlayer {
 } Player;
 
 /* Global Variable */
-extern Player players[MaxPlayer];
+Player players[MaxPlayer];
 
 /* Function Prototype */
 void CreatePlayer(Player *P, char color);
@@ -38,15 +37,14 @@ Player *GetPlayer(char color);
 int GetGold(Player player);
 /* Mengembalikan jumlah gold yang dimiliki player */
 
+void SetGold(Player *player, int gold);
+/* I.S. : Gold dari player sembarang */
+/* F.S. : Gold dari player terdefinisi melalui parameter input */
+
 List GetUnits(Player player);
 /* Mengembalikan list dari unit yang dimiliki player */
 
 void AddUnit(Player *P, Unit *unit);
-/*I.S P adalah Player yang sedang memainkan turnnya, location adalah grid dari selected unit, dan X adalah parameter untuk unit yang akan ditambah*/
-/*F.S jika X == A, maka archer akan ditambahkan ke list of units
-      jika X == S, maka swordsman akan ditambahkan ke list of units
-      jika X == W, maka whitemage akan ditambahkan ke list of units*/
-
 void DelUnit(Player *P, Unit *unit);
 
 List GetVillages(Player player);

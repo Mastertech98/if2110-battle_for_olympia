@@ -1,7 +1,5 @@
-#include "../unit.h"
-#include "../player.h"
-#include "../map.h"
 #include "info.h"
+
 #include "../pcolor.h"
 #include <stdio.h>
 
@@ -313,17 +311,12 @@ void PrintInfoGame(){
 		}
 	}
 	if(GetGrid(Absis(coordinate),Ordinat(coordinate)) != NULL){
-		if(GetPlayerFromColor(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))) == &players[0]){
+		if(GetPlayer(GetUnitColor(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate))))) == &players[0]){
 			printf("Owned by Player 1\n");
-		} else if(GetPlayerFromColor(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))) == &players[1]){
+		} else if(GetPlayer(GetUnitColor(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate))))) == &players[1]){
 			printf("Owned by Player 2\n");
 		}
 		
 		printf("Health %d/%d | ATK %d | DEF \n",GetHealth(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))),GetMaximumHealth(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))),GetAttack(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))));
 	}
 }
-
-
-
-
-

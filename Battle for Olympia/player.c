@@ -2,8 +2,6 @@
 
 #include <stdlib.h>
 
-Player players[MaxPlayer];
-
 void CreatePlayer(Player *P, char color)
 /* I.S. : Sembarang */
 /* F.S. : Terbentuk player dengan warna color */
@@ -41,24 +39,26 @@ int GetGold(Player player)
     return player.gold;
 }
 
+void SetGold(Player *player, int gold)
+/* I.S. : Income dari player sembarang */
+/* F.S. : Income dari player terdefinisi melalui parameter input */
+{
+    player->gold = gold;
+}
+
 List GetUnits(Player player) 
 /* Mengembalikan list dari unit yang dimiliki player */
 {
     return player.units;
 }
 
-void AddUnit(Player *P, Unit *unit)
+void AddUnit (Player *P, Unit *unit)
 /*I.S P adalah Player yang sedang memainkan turnnya, location adalah grid dari selected unit, dan X adalah parameter untuk unit yang akan ditambah*/
 /*F.S jika X == A, maka archer akan ditambahkan ke list of units
       jika X == S, maka swordsman akan ditambahkan ke list of units
       jika X == W, maka whitemage akan ditambahkan ke list of units*/
 {   
     InsVLast(&P->units, unit);
-}
-
-void DelUnit(Player *P, Unit *unit)
-{
-    DelP(&P->units, unit);
 }
 
 List GetVillages(Player player) 
@@ -68,7 +68,7 @@ List GetVillages(Player player)
 }
 
 int GetIncome(Player player) 
-/* Mengebmalikan income dari player */
+/* Mengembalikan income dari player */
 {
     return player.income;
 }
