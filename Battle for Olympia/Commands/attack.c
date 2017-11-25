@@ -15,37 +15,40 @@ void Attack(Unit *attacker) {
         return;
     }
     
-    int idxTarget;
+    int index;
 
     printf("Please select enemy you want to attack:\n");
     PrintTarget(target, *attacker);
 
     printf("Select enemy you want to attack: ");
-    scanf("%d", &idxTarget);
+    scanf("%d", &index);
 
-    if (idxTarget < 1 || idxTarget > target.count) {
+    if (index < 1 || index > target.count) {
         printf("Invalid input.\n");
         return;
     }
 
-    char stringEnemyClass[11];
-
-    --idxTarget;
+    Unit *attacked = target.enemy[--index];
+    char stringAttackedClass[11];
     
-    SetHealth(target.enemy[idxTarget], GetHealth(*target.enemy[idxTarget]) - GetAttack(*attacker));
+    SetHealth(attacked, GetHealth(*attacked) - GetAttack(*attacker));
 
-    UnitClassName(GetUnitClass(*target.enemy[idxTarget]), stringEnemyClass);
-    printf("Enemy's %s is damaged by %d.\n", stringEnemyClass, GetAttack(*attacker));
+    UnitClassName(GetUnitClass(*attacked), stringAttackedClass);
+    printf("Enemy's %s is damaged by %d.\n", stringAttackedClass, GetAttack(*attacker));
 
-    if (Retaliates(*target.enemy[idxTarget], *attacker)) {
+    if (GetHealth(*attacked) <= 0) {
+        printf("Enemy's %s is dead :)\n", stringAttackedClass);
+    }
+
+    if (Retaliates(*attacked, *attacker)) {
         char stringAttackerClass[11];
 
-        printf("Enemy's %s retaliates.\n", stringEnemyClass);
+        printf("Enemy's %s retaliates.\n", stringAttackedClass);
 
-        SetHealth(attacker, GetHealth(*attacker) - GetAttack(*target.enemy[idxTarget]));
+        SetHealth(attacker, GetHealth(*attacker) - GetAttack(*attacked));
 
         UnitClassName(GetUnitClass(*attacker), stringAttackerClass);
-        printf("Your %s is damaged by %d\n", stringAttackerClass, GetAttack(*target.enemy[idxTarget]));
+        printf("Your %s is damaged by %d\n", stringAttackerClass, GetAttack(*attacked));
 
         if (GetHealth(*attacker) <= 0) {
             printf("Your %s is dead :(\n", stringAttackerClass);
@@ -58,8 +61,8 @@ void Attack(Unit *attacker) {
     if (GetHealth(*attacker) <= 0) {
         Kill(attacker);
     }
-    if (GetHealth(*target.enemy[idxTarget]) <= 0) {
-        Kill(target.enemy[idxTarget]);
+    if (GetHealth(*attacked) <= 0) {
+        Kill(attacked);
     }
 }
 
@@ -71,12 +74,12 @@ void Kill(Unit *unit) {
 }
 
 void PrintTarget(Target target, Unit selectedUnit) {
-    char stringEnemyClass[11];
+    char stringAttackedClass[11];
     char stringRetaliates[13];
     POINT enemyLocation;
 
     for (int i = 0; i < target.count; ++i) {
-        UnitClassName(GetUnitClass(*target.enemy[i]), stringEnemyClass);
+        UnitClassName(GetUnitClass(*target.enemy[i]), stringAttackedClass);
 
         if (Retaliates(*target.enemy[i], selectedUnit)) {
             strcpy(stringRetaliates, "(Retaliates)");
@@ -88,7 +91,7 @@ void PrintTarget(Target target, Unit selectedUnit) {
 
         printf("%d. %s (%d,%d) | Health %d/%d %s\n", 
             1+i, 
-            stringEnemyClass, 
+            stringAttackedClass, 
             enemyLocation.X, 
             enemyLocation.Y,
             GetHealth(*target.enemy[i]), 
