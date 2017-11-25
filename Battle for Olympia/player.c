@@ -2,6 +2,7 @@
 #include "map.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #define StartingGold 50
 #define StartingIncome 2
@@ -13,7 +14,7 @@ void InitializePlayers(int numberOfPlayers, char *colors, POINT *coordinates)
 {
     for (int i = 0; i < numberOfPlayers; ++i) {
         char color = colors[i];
-        Player *player = GetPlayer(color);
+        Player *player = &players[i];
 
         SetGold(player, StartingGold);
         CreateEmptyList(&player->units);

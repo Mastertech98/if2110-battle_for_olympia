@@ -22,7 +22,7 @@ void CreateMap(int N, int M)
 void InitializeMap(int numberOfPlayers, char *colors, POINT *coordinates, int numberOfVillages)
 {
     for (int i = 0; i < numberOfPlayers; ++i) {
-        Player *player = GetPlayer(colors[i]);
+        Player *player = &players[i];
         int x = coordinates[i].X;
         int y = coordinates[i].Y;
         Grid *grid = GetGrid(x, y);
