@@ -7,21 +7,32 @@
 #define StartingIncome 2
 #define StartingUpkeep 1
 
-void InitializePlayers(int numberOfPlayers, char *colors, POINT *coordinates) 
-/* I.S. : Sembarang */
-/* F.S. : Inisialisasi player */
+void CreatePlayers(int numberOfPlayers, char colors[])
 {
     for (int i = 0; i < numberOfPlayers; ++i) {
-        char color = colors[i];
+        Player *player = &players[i];
+
+        SetGold(player, 0);
+        CreateEmptyList(&player->units);
+        CreateEmptyList(&player->villages);
+        SetIncome(player, 0);
+        SetUpkeep(player, 0);
+        player->color = colors[i];
+    }
+}
+
+void InitializePlayers(int numberOfPlayers, POINT coordinates[])
+{
+    for (int i = 0; i < numberOfPlayers; ++i) {
+        POINT coordinate = coordinates[i];
         Player *player = &players[i];
 
         SetGold(player, StartingGold);
-        CreateEmptyList(&player->units);
-        AddUnit(player, CreateUnit(King, color, coordinates[i]));
-        CreateEmptyList(&player->villages);
+        Unit *king = CreateUnit(King, GetColor(*player), coordinate);
+        AddUnit(player, king);
+        SetUnit(GetGrid(Absis(coordinate), Ordinat(coordinate)), king);
         SetIncome(player, StartingIncome);
         SetUpkeep(player, StartingUpkeep);
-        player->color = color;
     }
 }
 

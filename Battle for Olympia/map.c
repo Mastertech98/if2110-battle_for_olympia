@@ -19,7 +19,7 @@ void CreateMap(int N, int M)
     }
 }
 
-void InitializeMap(int numberOfPlayers, char *colors, POINT *coordinates, int numberOfVillages)
+void InitializeMap(int numberOfPlayers, POINT coordinates[], int numberOfVillages)
 {
     for (int i = 0; i < numberOfPlayers; ++i) {
         Player *player = &players[i];
