@@ -19,7 +19,7 @@ void CreateMap(int N, int M)
     }
 }
 
-void InitializeMap(int numberOfPlayers, char *colors, POINT *coordinates)
+void InitializeMap(int numberOfPlayers, char *colors, POINT *coordinates, int numberOfVillages)
 {
     for (int i = 0; i < numberOfPlayers; ++i) {
         Player *player = GetPlayer(colors[i]);
@@ -45,6 +45,17 @@ void InitializeMap(int numberOfPlayers, char *colors, POINT *coordinates)
         grid = GetGrid(x+1, y);
         grid->type = Castle;
         SetOwner(grid, player);
+    }
+
+    for (int j = 0; j < numberOfVillages; ++j) {
+        POINT coordinate;
+
+        do {
+            Absis(coordinate) = rand() % GetMapSizeN();
+            Ordinat(coordinate) = rand() % GetMapSizeM();
+        } while (GetType(*GetGrid(Absis(coordinate), Ordinat(coordinate))) != Normal);
+
+        GetGrid(Absis(coordinate), Ordinat(coordinate))->type = Village;
     }
 }
 
