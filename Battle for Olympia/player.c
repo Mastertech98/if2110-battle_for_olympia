@@ -2,7 +2,6 @@
 #include "map.h"
 
 #include <stdlib.h>
-#include <stdio.h>
 
 #define StartingGold 50
 #define StartingIncome 2
