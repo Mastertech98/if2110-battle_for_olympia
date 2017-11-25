@@ -65,9 +65,9 @@ void Attack(Unit *attacker) {
 
 void Kill(Unit *unit) {
     POINT location = GetLocation(*unit);
-    List L = GetUnits(*GetPlayer(GetUnitColor(*unit)));
-    DelP(&L, unit);
+    DelUnit(GetPlayer(GetUnitColor(*unit)), unit);
     SetUnit(GetGrid(Absis(location), Ordinat(location)), 0);
+    DestroyUnit(unit);
 }
 
 void PrintTarget(Target target, Unit selectedUnit) {
