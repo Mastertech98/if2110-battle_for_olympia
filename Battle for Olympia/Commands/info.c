@@ -3,6 +3,23 @@
 #include "../pcolor.h"
 #include <stdio.h>
 
+void PrintByColor(char c, char color) {
+	if(color == 'R'){
+		print_red(c);
+	} else if(color == 'G'){
+		print_green(c);
+	} else if(color == 'Y'){
+		print_yellow(c);
+	} else if(color == 'B'){
+		print_blue(c);
+	} else if(color == 'M'){
+		print_magenta(c);
+	} else if(color == 'C'){
+		print_cyan(c);
+	} else {
+		printf("%c", c);
+	}
+}
 
 void PrintMap(){
 //I.S. Tidak ada
@@ -85,77 +102,35 @@ void PrintMap(){
 							if(j == 1){
 								//Melihat apakah ada alamat kepemilikan dari owner(grid)
 								//jika ada maka akan melakukan aksi true
-								if(GetOwner(*GetGrid(i, k/4)) != NULL){
-									//printf("masuk\n");
-									//Melirik warna daripada owner
-									//Representasinya R(Red),G(Green),Y(Yellow),B(Blue),
-									//					M(Magenta), dan C(Cyan)
-									
-									//Kemudian setelah diketahui warnanya, maka akan dicari
-									//tipe daripada setiap petak
-									if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'R'){
-										print_red(GetType(*GetGrid(i, k/4)));
-									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'G'){
-										print_green(GetType(*GetGrid(i, k/4)));
-									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'Y'){
-										print_yellow(GetType(*GetGrid(i, k/4)));
-									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'B'){
-										print_blue(GetType(*GetGrid(i, k/4)));
-									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'M'){
-										print_magenta(GetType(*GetGrid(i, k/4)));
-									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'C'){
-										print_cyan(GetType(*GetGrid(i, k/4)));
-									} else {
-										printf("%c",GetType(*GetGrid(i, k/4)));
-									}
-								
-								//Kasus ketika alamat kepemilikan dari owner tidak ada	
-								} else {
-									
-									//Jika tidak ada kepemilikan namun bertipe village
-									//maka akan mencetak village berwarna default (putih)
-									if(GetType(*GetGrid(i, k/4)) == Village){
-										printf("V");
-										
-									//jika tidak akan membuat petak kosong
-									} else {
-										printf(" ");
-									}
-								}
+								Grid *grid = GetGrid(i, k/4);
+								Player *owner = GetOwner(*grid);
+								Type type = GetType(*grid);
+								char color = owner ? GetColor(*owner) : 0;
+
+								PrintByColor(type, color);
 								
 							//saat j=2 atau saat kasus ingin mencetak unit pada petak
 							} else if(j==2){
 								
 								//melihat apakah suatu petak memiliki alamat unit
 								//jika iya akan melakukan aksi true
-								
-								if(GetUnit(*GetGrid(i, k/4)) != NULL){
-									
+								Unit *unit = GetUnit(*GetGrid(i, k/4));
+								char color = 0;
+								UnitClass class = None;
+
+								if(unit != NULL){
 									//Mencari warna dari unit tersebut dan mencetaknya 
 									//representasi warna sama seperti diatas
-									if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'R'){
-										//print_red(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
-										printf("%c",GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
-									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'G'){
-										print_green(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
-									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'Y'){
-										print_yellow(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
-									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'B'){
-										print_blue(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
-									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'M'){
-										print_magenta(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
-									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'C'){
-										print_cyan(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
-									} 
-							//Jika petak tidak memiliki alamat unit maka akan membuat petak peta kosong
-							} else {
-								printf(" ");
-							} 
+									color = GetUnitColor(*unit);
+									class = GetUnitClass(*unit);
+								}
+
+								PrintByColor(class, color);
 						
 						//kasus ketika j = 3 atau saat petak pasti kosong
-						} else if(j = 3){
-							printf(" ");
-						}
+							} else if(j = 3){
+								printf(" ");
+							}
 					//kondisi ketika kolom kelipatan 4 dari 0 [0,4,8,...]	
 					}else if(k%4 == 0){
 						printf("*");
@@ -183,59 +158,54 @@ void PrintInfoGame(){
 //	   beserta pemiliknya
 
 	POINT coordinate;
+	int x, y;
 	printf("\n");
 	
 	printf("Enter the coordinate of the cell : \n");
-	scanf("%d %d",&Absis(coordinate),&Ordinat(coordinate));
-	while((Absis(coordinate) >GetMapSizeN()) || (Ordinat(coordinate) > GetMapSizeM())){
+	scanf("%d %d",&x,&y);
+	while((x >GetMapSizeN()) || (y > GetMapSizeM())){
 		printf("Input is not valid !!!\n");
 		printf("Please re-enter the coordinate of the cell : \n");
-		scanf("%d %d",Absis(coordinate),Ordinat(coordinate));
+		scanf("%d %d",x,y);
 	}
 	
 	printf("== Cell Info ==\n");
+	Grid *grid = GetGrid(x, y);
 	
-	if(GetGrid(Absis(coordinate),Ordinat(coordinate)) != NULL){
-		if(GetType(*GetGrid(Absis(coordinate),Ordinat(coordinate))) == Normal){
-			printf("Normal\n");
-		} else if(GetType(*GetGrid(Absis(coordinate),Ordinat(coordinate))) == Tower){
-			printf("Tower\n");
-		} else if(GetType(*GetGrid(Absis(coordinate),Ordinat(coordinate))) == Castle){
-			printf("Castle\n");
-		} else if(GetType(*GetGrid(Absis(coordinate),Ordinat(coordinate))) == Village){
-			printf("Village\n");
-		}
+	Type type = GetType(*grid);
+	Player *owner = GetOwner(*grid);
+	Unit *unit = GetUnit(*grid);
+
+	if(type == Normal){
+		printf("Normal\n");
+	} else if(type == Tower){
+		printf("Tower\n");
+	} else if(type == Castle){
+		printf("Castle\n");
+	} else if(type == Village){
+		printf("Village\n");
 	}
-	if(GetGrid(Absis(coordinate),Ordinat(coordinate)) != NULL){
-		if(GetOwner(*GetGrid(Absis(coordinate),Ordinat(coordinate))) == &players[0]){
-			printf("Owned by Player 1\n");
-		} else if(GetOwner(*GetGrid(Absis(coordinate),Ordinat(coordinate))) == &players[1]){
-			printf("Owned by Player 2\n");
-		} else {
-			
-		}
-	}	
+
+	if(owner == &players[0]){
+		printf("Owned by Player 1\n");
+	} else if(owner == &players[1]){
+		printf("Owned by Player 2\n");
+	}
 	printf("\n");
 	
-	printf("== Unit Info ==\n");
-	if(GetGrid(Absis(coordinate),Ordinat(coordinate)) != NULL){
-		if (GetUnitClass(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))) == King){
-			printf("King\n");
-		} else if (GetUnitClass(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))) == Archer){
-			printf("Archer\n");
-		} else if (GetUnitClass(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))) == Swordsman){
-			printf("Swordsman\n");
-		} else if (GetUnitClass(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))) == WhiteMage){
-			printf("Whitemage\n");
-		}
-	}
-	if(GetGrid(Absis(coordinate),Ordinat(coordinate)) != NULL){
-		if(GetPlayer(GetUnitColor(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate))))) == &players[0]){
+	if (unit != NULL) {
+		printf("== Unit Info ==\n");
+		char stringUnitClass[11];
+		UnitClassName(GetUnitClass(*unit), stringUnitClass);
+		owner = GetPlayer(GetUnitColor(*unit));
+
+		printf("%s\n", stringUnitClass);
+
+		if(owner == &players[0]){
 			printf("Owned by Player 1\n");
-		} else if(GetPlayer(GetUnitColor(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate))))) == &players[1]){
+		} else if(owner == &players[1]){
 			printf("Owned by Player 2\n");
 		}
-		
-		printf("Health %d/%d | ATK %d | DEF \n",GetHealth(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))),GetMaximumHealth(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))),GetAttack(*GetUnit(*GetGrid(Absis(coordinate),Ordinat(coordinate)))));
+		printf("Health %d/%d | ATK %d\n",GetHealth(*unit),GetMaximumHealth(*unit),GetAttack(*unit));
 	}
 }
