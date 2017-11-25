@@ -14,7 +14,8 @@ typedef enum EUnitClass {
     Archer = 'A', 
     Swordsman = 'S', 
     WhiteMage = 'W',
-    Movement = '#'
+    Movement = '#', 
+    None = ' '
 } UnitClass;
 typedef enum EAttackType {Melee, Ranged} AttackType;
 
