@@ -9,7 +9,7 @@
 typedef MATRIKS Map;
 
 /* Function Prototype */
-void CreateMap(int N, int M, int numberOfPlayers, char *colors, POINT *coordinates);
+void CreateMap(int N, int M, int numberOfPlayers, char *colors, POINT *coordinates,int NumberOfVillage);
 
 Grid *GetGrid(int x, int y);
 char GetGridColor(Grid grid);
@@ -27,4 +27,5 @@ void SetUnit(Grid *grid, Unit *unit);
 int GetMapSizeN();
 int GetMapSizeM();
 
+void RandomVillage();
 #endif
