@@ -83,64 +83,29 @@ void PrintMap(){
 						
 							//Kasus ketika j = 1 atau saat akan mencetak petak
 							if(j == 1){
-								
 								//Melihat apakah ada alamat kepemilikan dari owner(grid)
 								//jika ada maka akan melakukan aksi true
 								if(GetOwner(*GetGrid(i, k/4)) != NULL){
+									//printf("masuk\n");
 									//Melirik warna daripada owner
 									//Representasinya R(Red),G(Green),Y(Yellow),B(Blue),
 									//					M(Magenta), dan C(Cyan)
 									
 									//Kemudian setelah diketahui warnanya, maka akan dicari
 									//tipe daripada setiap petak
-									if(GetColor(*GetOwner(*GetGrid(i+1, k/4))) == 'R'){
-										if(GetType(*GetGrid(i, k/4)) == Tower){
-											print_red('T');
-										} else if(GetType(*GetGrid(i, k/4)) == Castle){
-											print_red('C');
-										} else if(GetType(*GetGrid(i, k/4)) == Village){
-											print_red('V');
-										}
+									if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'R'){
+										//print_red(GetType(*GetGrid(i, k/4)));
+										printf("%c",GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'G'){
-										if(GetType(*GetGrid(i, k/4)) == Tower){
-											print_green('T');
-										} else if(GetType(*GetGrid(i, k/4)) == Castle){
-											print_green('C');
-										} else if(GetType(*GetGrid(i, k/4)) == Village){
-											print_green('V');
-										}
+										print_green(GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'Y'){
-										if(GetType(*GetGrid(i, k/4)) == Tower){
-											print_yellow('T');
-										} else if(GetType(*GetGrid(i, k/4)) == Castle){
-											print_yellow('C');
-										} else if(GetType(*GetGrid(i, k/4)) == Village){
-											print_yellow('V');
-										}
+										print_yellow(GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'B'){
-										if(GetType(*GetGrid(i, k/4)) == Tower){
-											print_blue('T');
-										} else if(GetType(*GetGrid(i, k/4)) == Castle){
-											print_blue('C');
-										} else if(GetType(*GetGrid(i, k/4)) == Village){
-											print_blue('V');
-										}
+										print_blue(GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'M'){
-										if(GetType(*GetGrid(i, k/4)) == Tower){
-											print_magenta('T');
-										} else if(GetType(*GetGrid(i, k/4)) == Castle){
-											print_magenta('C');
-										} else if(GetType(*GetGrid(i, k/4)) == Village){
-											print_magenta('V');
-										}
+										print_magenta(GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'C'){
-										if(GetType(*GetGrid(i, k/4)) == Tower){
-											print_cyan('T');
-										} else if(GetType(*GetGrid(i, k/4)) == Castle){
-											print_cyan('C');
-										} else if(GetType(*GetGrid(i, k/4)) == Village){
-											print_cyan('V');
-										}
+										print_cyan(GetType(*GetGrid(i, k/4)));
 									}
 								
 								//Kasus ketika alamat kepemilikan dari owner tidak ada	
@@ -168,65 +133,18 @@ void PrintMap(){
 									//Mencari warna dari unit tersebut dan mencetaknya 
 									//representasi warna sama seperti diatas
 									if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'R'){
-										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
-											printf("K");
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
-											print_red('A');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
-											print_red('S');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
-											print_red('W');
-										}
+										//print_red(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
+										printf("%c",GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'G'){
-										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
-											print_green('K');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
-											print_green('A');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
-											print_green('S');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
-											print_green('W');
-										}
+										print_green(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'Y'){
-										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
-											print_yellow('K');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
-											print_yellow('A');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
-											print_yellow('S');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
-											print_yellow('W');
-										}
+										print_yellow(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'B'){
-										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
-											print_blue('K');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
-											print_blue('A');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
-											print_blue('S');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
-											print_blue('W');
-										}
+										print_blue(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'M'){
-										if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == King){
-											print_magenta('K');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Archer){
-											print_magenta('A');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
-											print_magenta('S');
-										} else if(GetUnitClass(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
-											print_magenta('W');
-										}
+										print_magenta(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
 									} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == 'C'){
-										if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == King){
-											print_cyan('K');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Archer){
-											print_cyan('A');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == Swordsman){
-											print_cyan('S');
-										} else if(GetUnitColor(*GetUnit(*GetGrid(i, k/4))) == WhiteMage){
-											print_cyan('W');
-										}
+										print_cyan(GetUnitClass(*GetUnit(*GetGrid(i, k/4))));
 									} 
 							//Jika petak tidak memiliki alamat unit maka akan membuat petak peta kosong
 							} else {
