@@ -1,4 +1,5 @@
 #include "../map.h"
+#include "../player.h"
 #include "../Commands/info.h"
 
 #include <stdio.h>
@@ -9,8 +10,8 @@ int main() {
 
     CreateMap(10, 10);
 
-    InitializeMap(2, colors, coordinates, 3);
-    InitializePlayers(2, colors, coordinates);
+    InitializeMap(2, coordinates, 3);
+    InitializePlayers(2, coordinates);
 
     PrintMap();
 }
