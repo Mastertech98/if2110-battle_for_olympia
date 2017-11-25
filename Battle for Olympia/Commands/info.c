@@ -94,8 +94,7 @@ void PrintMap(){
 									//Kemudian setelah diketahui warnanya, maka akan dicari
 									//tipe daripada setiap petak
 									if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'R'){
-										//print_red(GetType(*GetGrid(i, k/4)));
-										printf("%c",GetType(*GetGrid(i, k/4)));
+										print_red(GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'G'){
 										print_green(GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'Y'){
@@ -106,6 +105,8 @@ void PrintMap(){
 										print_magenta(GetType(*GetGrid(i, k/4)));
 									} else if(GetColor(*GetOwner(*GetGrid(i, k/4))) == 'C'){
 										print_cyan(GetType(*GetGrid(i, k/4)));
+									} else {
+										printf("%c",GetType(*GetGrid(i, k/4)));
 									}
 								
 								//Kasus ketika alamat kepemilikan dari owner tidak ada	
