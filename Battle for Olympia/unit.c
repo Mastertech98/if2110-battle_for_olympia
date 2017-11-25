@@ -106,14 +106,17 @@ boolean Retaliates(Unit attacked, Unit attacker)
 /* Mengembalikan apakah unit tersebut melakukan retaliates atau tidak */
 /* true jika melakukan false jika tidak */
 {
-    if (GetAttackType(attacked) == GetAttackType(attacker)) {
-        if (GetAttack(attacked) >= GetHealth(attacker)) {
+    
+    if (GetAttack(attacker) < GetHealth(attacked)) {
+        if (GetUnitClass(attacker) == King) {
             return true;
         } else {
-            return false;
+            if (GetAttackType(attacked) == GetAttackType(attacker)) {
+                return true;
+            } else {
+                return false;
+            }
         }
-    } else if (GetUnitClass(attacker) == King) {
-        return true;
     } else {
         return false;
     }
