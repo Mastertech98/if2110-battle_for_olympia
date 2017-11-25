@@ -4,7 +4,6 @@
 int main()
 {
     List units,villages;
-    Player P1;
     POINT location1;
     char unitname[12];
     Unit *unitCreated;
@@ -13,37 +12,33 @@ int main()
     int N,x,y;
     char type;
     
-    /*Inisialisasi Player*/
-    CreateEmptyList(&units);
-    CreateEmptyList(&villages);
-    P1.gold = 100;
-    P1.units = units;
-    P1.villages= villages;
-    P1.income = 10;
-    P1.upkeep = 10; 
-    P1.color = 'R'; 
-
-    /*Menambahkan King ke list of Unit */
-    location1 = MakePOINT(1,1);
-    unitCreated = CreateUnit(King, 0, location1);
-    selectedUnit = unitCreated;
-    AddUnit(&P1, unitCreated);
-    PrintListUnits(GetUnits(P1));
-
-    /* Inisialisasi map */
+    /*Inisialisasi Player dan Map*/
     CreateMap(3,3);
     POINT coordinates[1];
+    char colors[1];
+    colors[0] = 'R';
+    location1 = MakePOINT(1,1);
     coordinates[0] = location1;
+    CreatePlayers(1, colors);
+    InitializePlayers(1, coordinates);
     InitializeMap (1, coordinates, 0);
-    Grid *grid = GetGrid(1,1);
-    SetUnit(grid,unitCreated);
+    
+    printf("--LIST SEBELUM MEREKRUT--\n");
+    PrintListUnits(GetUnits(players[0]));
+
     PrintMap();
     printf("\n");
 
+    /*Driver change unit*/
+    ChangeUnit (&players[0], &selectedUnit);
+    
+    UnitClassName(GetUnitClass(*selectedUnit), unitname);
+    printf("%s\n", unitname);
+    
     /*Driver RecruitUnit*/
     if (GetUnitClass(*selectedUnit) == King)
     {
-        RecruitUnit(&P1, selectedUnit);
+        RecruitUnit(&players[0], selectedUnit);
     }
     else
     {
@@ -72,13 +67,9 @@ int main()
             AddUnit(&P1,unitCreated);
         }
     }*/
-
-    /*Driver change unit*/
-    ChangeUnit (&P1, &selectedUnit);
-
-    UnitClassName(GetUnitClass(*selectedUnit), unitname);
-    printf("%s\n", unitname);
-    PrintPriceList();
+    PrintMap();
+    printf("--LIST SESUDAH MEREKRUT--\n");
+    PrintListUnits(GetUnits(players[0]));
 
     return 0;
 }
