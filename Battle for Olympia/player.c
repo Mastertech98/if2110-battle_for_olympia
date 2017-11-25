@@ -3,25 +3,25 @@
 
 #include <stdlib.h>
 
-void CreatePlayer(Player *P, char color, POINT coordinate)
-/* I.S. : Sembarang */
-/* F.S. : Terbentuk player dengan warna color */
-{
-    SetGold(P, 50);
-    CreateEmptyList(&P->units);
-    AddUnit(P, CreateUnit(King, color, coordinate));
-    CreateEmptyList(&P->villages);
-    SetIncome(P, 2);
-    SetUpkeep(P, 1);
-    P->color = color;
-}
+#define StartingGold 50
+#define StartingIncome 2
+#define StartingUpkeep 1
 
-void InitializePlayer(int numberOfPlayers, char *colors, POINT *coordinates) 
+void InitializePlayers(int numberOfPlayers, char *colors, POINT *coordinates) 
 /* I.S. : Sembarang */
-/* F.S. : Inisialisasi 2 player dengan warna merah dan biru */
+/* F.S. : Inisialisasi player */
 {
     for (int i = 0; i < numberOfPlayers; ++i) {
-        CreatePlayer(&players[i], colors[i], coordinates[i]);
+        char color = colors[i];
+        Player *player = GetPlayer(color);
+
+        SetGold(player, StartingGold);
+        CreateEmptyList(&player->units);
+        AddUnit(player, CreateUnit(King, color, coordinates[i]));
+        CreateEmptyList(&player->villages);
+        SetIncome(player, StartingIncome);
+        SetUpkeep(player, StartingUpkeep);
+        player->color = color;
     }
 }
 
