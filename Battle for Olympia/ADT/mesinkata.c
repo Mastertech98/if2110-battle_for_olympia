@@ -2,6 +2,44 @@
 /* Implementasi Mesin Kata: Model Akuisisi Versi I */
 
 #include "mesinkata.h"
+const Kata MOVE = {
+    .TAbKata[Nmax+1] = "MOVE",
+    .Length = 4
+}
+const Kata UNDO = {
+    .TAbKata[Nmax+1] = "UNDO",
+    .Length = 4
+}
+const Kata CHANGE_UNIT = {
+    .TAbKata[Nmax+1] = "CHANGE_UNIT",
+    .Length = 11
+}
+const Kata RECRUIT = {
+    .TAbKata[Nmax+1] = "RECRUIT",
+    .Length = 7
+}
+const Kata ATTACK = {
+    .TAbKata[Nmax+1] = "ATTACK",
+    .Length = 6
+}
+const Kata MAP = {
+    .TAbKata[Nmax+1] = "MAP",
+    .Length = 3
+}
+const Kata INFO = {
+    .TAbKata[Nmax+1] = "INFO",
+    .Length = 4
+}
+const Kata END_TURN = {
+    .TAbKata[Nmax+1] = "END_TURN",
+    .Length = 8
+}
+const Kata SAVE = {
+    .TAbKata[Nmax+1] = "SAVE",
+    .Length = 4
+}
+
+
 
 /* State Mesin Kata */
 boolean EndKata;

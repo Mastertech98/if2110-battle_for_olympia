@@ -16,6 +16,16 @@ typedef struct
     int Length;
 } Kata;
 
+const Kata MOVE;
+const Kata UNDO;
+const Kata CHANGE_UNIT;
+const Kata RECRUIT;
+const Kata ATTACK;
+const Kata MAP;
+const Kata INFO;
+const Kata END_TURN;
+const Kata SAVE;
+
 /* State Mesin Kata */
 extern boolean EndKata;
 extern Kata CKata;
