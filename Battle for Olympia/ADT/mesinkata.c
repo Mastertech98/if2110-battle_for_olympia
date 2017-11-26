@@ -78,3 +78,27 @@ void SalinKata()
         }
     } /* CC = MARK or CC = BLANK */
 }
+
+boolean isKataSama (Kata S1, Kata S2)
+/* Mengembalikan true jika S1 == S2, dan false jika tidak sama */
+{
+    if (Length.S1 != Length.S2)
+        return false;
+    else
+    {
+       boolean found = false;
+       int i = 1;
+       while (!found && i <= Length.S1)
+       {
+            if (S1.TabKata[i] ==  S2.TabKata[i])
+            {
+                i++;
+            }
+            else
+            {
+                found = true;
+            }
+       }
+       return !found;
+    }
+}
