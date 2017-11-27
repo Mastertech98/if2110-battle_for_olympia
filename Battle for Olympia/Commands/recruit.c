@@ -45,6 +45,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                     SetMovementPoints(unit,0);
                                     SetUnit(CastleLoc, unit);
                                     AddUnit(P,unit);
+                                    SetUpkeep(P, GetUpkeep(*P)+1);
                                 }
                                 else   
                                     printf("You don't have enough money\n");
@@ -59,6 +60,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                     SetMovementPoints(unit,0);
                                     SetUnit(CastleLoc, unit);
                                     AddUnit(P,unit);
+                                    SetUpkeep(P, GetUpkeep(*P)+1);
                                 }
                                 else   
                                     printf("You don't have enough money\n");
@@ -73,6 +75,7 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
                                     SetMovementPoints(unit,0);
                                     SetUnit(CastleLoc, unit);
                                     AddUnit(P,unit);
+                                    SetUpkeep(P, GetUpkeep(*P)+1);
                                 }
                                 else   
                                     printf("You don't have enough money\n");
