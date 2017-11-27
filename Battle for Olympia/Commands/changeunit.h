@@ -9,4 +9,8 @@ void ChangeUnit (Player *P, Unit **selectedUnit);
 
 void NextUnit (Player *P, Unit **selectedUnit);
 
+Unit *GetSelectedUnit();
+
+void SetSelectedUnit(Unit unit);
+
 #endif
