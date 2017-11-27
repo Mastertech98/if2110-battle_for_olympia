@@ -22,9 +22,9 @@ int main () {
         } else if (!strcmp(command, "UNDO")) {
             
         } else if (!strcmp(command, "CHANGE_UNIT")) {
-            
+            ChangeUnit(&Player, &selectedUnit);
         } else if (!strcmp(command, "RECRUIT")) {
-            
+            RecruitUnit(&Player, selectedUnit);
         } else if (!strcmp(command, "ATTACK")) {
             Attack(selectedUnit);
         } else if (!strcmp(command, "MAP")) {

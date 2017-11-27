@@ -107,31 +107,6 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
     }
 }
 
-void ChangeUnit (Player *P, Unit **selectedUnit)
-{
-    /*I.S. P adalah player yang sedang memainkan turnnya, selectedUnit adalah unit yang sedang dipilih pada saat ini*/
-    /*F.S. selectedUnit akan berganti sesuai dengan pilihan player*/
-    int choice,i;
-    List units;
-    address pt;
-
-    units = GetUnits(*P);
-    printf("== List of Units ==\n");
-    PrintListUnits(units);
-    printf("Please enter the no. of unit you want to select: ");
-    scanf("%d",&choice);
-    if (choice > NbElmt(units) || choice < 1)
-    {
-        printf("salah woy!\n");
-    }
-    else
-    {
-        pt = SearchbyChoice (units, choice);
-        *selectedUnit = (Unit *) Info(pt);
-        
-    }
-}
-
 void PrintListUnits(List units)
 /*I.S. P adalah player yang sedang memainkan turnnya*/
 /*F.S. List of Units yang dimiliki player akan ditampilkan ke layar*/
