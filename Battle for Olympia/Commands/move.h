@@ -13,9 +13,9 @@ extern Stack S_moves;
 
 const Unit UNITMOV;
 
-void Move(Unit *unit, Map *map);
+void Move(Unit *unit);
 void MakeMovementMap(Unit unit);
-void ClearMovementMap(Map *map);
+void ClearMovementMap();
 boolean IsValidUndo();
 void Undo();
 

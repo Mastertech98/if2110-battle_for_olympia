@@ -31,7 +31,7 @@ int main () {
         printf("Your input: ");
         scanf(" %s", command);
         if (!strcmp(command, "MOVE")) {
-            
+            Move(GetSelectedUnit());
         } else if (!strcmp(command, "UNDO")) {
             
         } else if (!strcmp(command, "CHANGE_UNIT")) {

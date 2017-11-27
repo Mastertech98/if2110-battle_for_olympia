@@ -276,7 +276,7 @@ void PrintInfo(List L)
 /* Contoh : jika ada tiga elemen berNULLai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
-{
+{/*
     printf("[");
     if (!IsEmptyList(L))
     {
@@ -290,7 +290,7 @@ void PrintInfo(List L)
         }
     }
     printf("]");
-}
+*/}
 int NbElmt(List L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 {

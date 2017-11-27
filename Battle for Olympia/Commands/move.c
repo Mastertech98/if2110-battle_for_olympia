@@ -22,7 +22,7 @@ const Unit UNITMOV = {
     .price = DUMVAL*/
 };
 
-void Move(Unit *unit, Map *map)
+void Move(Unit *unit)
 {
     POINT targetLoc;
     boolean moved = false;
@@ -66,7 +66,7 @@ void Move(Unit *unit, Map *map)
         }
     }while(!moved);
 
-    ClearMovementMap(map);
+    ClearMovementMap();
 }
 
 void MakeMovementMap(Unit unit)
@@ -111,12 +111,12 @@ void MakeMovementMap(Unit unit)
     }
 }
 
-void ClearMovementMap(Map *map)
+void ClearMovementMap()
 {
     Unit *unit;
 
-    for(int i=0; i<GetMapSizeN(*map); i++){
-        for(int j=0; j<GetMapSizeM(*map); j++){
+    for(int i=0; i<GetMapSizeN(map); i++){
+        for(int j=0; j<GetMapSizeM(map); j++){
             unit = GetUnit(*GetGrid(i,j));
             if(unit!=NULL){
                 if(GetUnitClass(*unit)==Movement){

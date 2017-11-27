@@ -154,14 +154,14 @@ void PrintMap()
 							{
 								//Mencari warna dari unit tersebut dan mencetaknya
 								//representasi warna sama seperti diatas
-								char color = unit == GetSelectedUnit()? 'G' : GetUnitColor(*unit);
+								char color = unit == GetSelectedUnit()? '0' : GetUnitColor(*unit);
 								PrintByColor(GetUnitClass(*unit), color);
 							} else {
 								printf(" ");
 							}
 							//kasus ketika j = 3 atau saat petak pasti kosong
 						}
-						else if (j = 3)
+						else if (j == 3)
 						{
 							printf(" ");
 						}
@@ -191,6 +191,7 @@ void PrintMap()
 		else
 			printf("*");
 	}
+	printf("\n");
 }
 
 void PrintInfoGame()
@@ -200,7 +201,6 @@ void PrintInfoGame()
 	//	   dan pemiliknya serta Unit yang ada di peta tersebut [King,Archer,Swordsman,WhiteMage]
 	//	   beserta pemiliknya
 
-	POINT coordinate;
 	int x, y;
 	printf("\n");
 
@@ -210,7 +210,7 @@ void PrintInfoGame()
 	{
 		printf("Input is not valid !!!\n");
 		printf("Please re-enter the coordinate of the cell : \n");
-		scanf("%d %d", x, y);
+		scanf("%d %d", &x, &y);
 	}
 
 	printf("== Cell Info ==\n");

@@ -18,10 +18,10 @@ maka, unit yang dimiliki player akan bertambah dan dispawn di tempat castle yang
     KingLoc = GetGrid(Absis(temp), Ordinat(temp));
     if (GetType(*KingLoc)==Tower)
     {
-        done = false;
         do
         {
             printf("Enter the coordinate of empty castle: ");
+            done = false;
             scanf("%d %d",&x,&y);
             temp = MakePOINT(x,y);
             CastleLoc = GetGrid(x,y);

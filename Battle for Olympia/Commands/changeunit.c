@@ -8,7 +8,7 @@ void ChangeUnit (Player *P)
 {
     /*I.S. P adalah player yang sedang memainkan turnnya, selectedUnit adalah unit yang sedang dipilih pada saat ini*/
     /*F.S. selectedUnit akan berganti sesuai dengan pilihan player*/
-    int choice,i;
+    int choice;
     List units;
     address pt;
 
