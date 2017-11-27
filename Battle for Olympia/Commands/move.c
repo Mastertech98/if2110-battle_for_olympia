@@ -87,15 +87,15 @@ void MakeMovementMap(Unit unit)
             b_continue = true;
 
             while(b_continue){
-                gridA = GetGrid(Absis(location)+(i*abs(j)*k), Ordinat(location)+(i*abs(j+1)*k));
-
                 b_continue = i<=GetMovementPoints(unit)
                   && (Absis(location)+(i*abs(j)*k) >= 0 && Absis(location)+(i*abs(j)*k) < GetMapSizeN()
                   && Ordinat(location)+(i*abs(j+1)*k) >= 0 && Ordinat(location)+(i*abs(j+1)*k) < GetMapSizeM());
 
-                printf("%d,%d\n", Absis(location)+(i*abs(j)*k), Ordinat(location)+(i*abs(j+1)*k));
-
                 if(!b_continue) break;
+
+                gridA = GetGrid(Absis(location)+(i*abs(j)*k), Ordinat(location)+(i*abs(j+1)*k));
+
+                printf("%d,%d\n", Absis(location)+(i*abs(j)*k), Ordinat(location)+(i*abs(j+1)*k));
 
                 if(GetUnit(*gridA)==NULL){
                     SetUnit(gridA, &UNITMOV);
