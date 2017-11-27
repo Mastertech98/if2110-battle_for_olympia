@@ -50,7 +50,7 @@ void PrintMap()
 	//menginisialisasi Kolom dan Baris
 	Kolom = GetMapSizeM();
 	Baris = GetMapSizeN();
-
+	
 	//Akan mengisi loop i,j,k dengan i(baris),j(isikotak = 3),k(kolom).
 
 	//loop pertama untuk baris
@@ -61,7 +61,7 @@ void PrintMap()
 		if (i == 0)
 		{
 			//mencetak jarak spasi sebelum indeks tiap kolom
-			printf("   ");
+			printf("    ");
 
 			//mencetak indeks
 			//Kolom dikalikan 4 karena besar 1 kolom berupa 4 (tidak termasuk border paling kiri vertikal)
@@ -100,15 +100,19 @@ void PrintMap()
 			//sehingga mencetak indeks baris
 			if (j == 2)
 			{
-				printf("%d", i);
-				printf(" *");
-
+				if(i/10>=1){
+					printf(" %d", i);
+					printf("*");
+				} else {
+					printf(" %d", i);
+					printf(" *");
+				}
 				//kasus ketika indeks baris tidak berada di tempatnya
 				//sehingga hanya mencetak kosong
 			}
 			else
 			{
-				printf("  *");
+				printf("   *");
 			}
 
 			//loop ketiga untuk kolom
@@ -154,14 +158,14 @@ void PrintMap()
 							{
 								//Mencari warna dari unit tersebut dan mencetaknya
 								//representasi warna sama seperti diatas
-								char color = unit == GetSelectedUnit()? '0' : GetUnitColor(*unit);
+								char color = unit == GetSelectedUnit()? 'G' : GetUnitColor(*unit);
 								PrintByColor(GetUnitClass(*unit), color);
 							} else {
 								printf(" ");
 							}
 							//kasus ketika j = 3 atau saat petak pasti kosong
 						}
-						else if (j == 3)
+						else if (j = 3)
 						{
 							printf(" ");
 						}
@@ -187,11 +191,10 @@ void PrintMap()
 	for (i = 0; i <= Kolom * 4; i++)
 	{
 		if (i == 0)
-			printf("  *");
+			printf("   *");
 		else
 			printf("*");
 	}
-	printf("\n");
 }
 
 void PrintInfoGame()
@@ -201,6 +204,7 @@ void PrintInfoGame()
 	//	   dan pemiliknya serta Unit yang ada di peta tersebut [King,Archer,Swordsman,WhiteMage]
 	//	   beserta pemiliknya
 
+	POINT coordinate;
 	int x, y;
 	printf("\n");
 
@@ -210,7 +214,7 @@ void PrintInfoGame()
 	{
 		printf("Input is not valid !!!\n");
 		printf("Please re-enter the coordinate of the cell : \n");
-		scanf("%d %d", &x, &y);
+		scanf("%d %d", x, y);
 	}
 
 	printf("== Cell Info ==\n");
