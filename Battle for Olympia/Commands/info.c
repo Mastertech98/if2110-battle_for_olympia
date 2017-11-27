@@ -1,7 +1,6 @@
 #include "info.h"
-
+#include "end_turn.h"
 #include "changeunit.h"
-
 #include "../pcolor.h"
 #include <stdio.h>
 
@@ -49,8 +48,8 @@ void PrintMap()
 	//definisi absis untuk banyak baris dan ordinat untuk banyak kolom
 
 	//menginisialisasi Kolom dan Baris
-	Kolom = GetMapSizeN();
-	Baris = GetMapSizeM();
+	Kolom = GetMapSizeM();
+	Baris = GetMapSizeN();
 
 	//Akan mengisi loop i,j,k dengan i(baris),j(isikotak = 3),k(kolom).
 
@@ -135,7 +134,7 @@ void PrintMap()
 						{
 							//Melihat apakah ada alamat kepemilikan dari owner(grid)
 							//jika ada maka akan melakukan aksi true
-							Grid *grid = GetGrid(i, k / 4);
+							Grid *grid = GetGrid(k/4, i);
 							Player *owner = GetOwner(*grid);
 							Type type = GetType(*grid);
 							char color = owner ? GetColor(*owner) : 0;
@@ -149,7 +148,7 @@ void PrintMap()
 
 							//melihat apakah suatu petak memiliki alamat unit
 							//jika iya akan melakukan aksi true
-							Unit *unit = GetUnit(*GetGrid(i, k / 4));
+							Unit *unit = GetUnit(*GetGrid(k/4, i));
 
 							if (unit != NULL)
 							{
@@ -162,7 +161,7 @@ void PrintMap()
 							}
 							//kasus ketika j = 3 atau saat petak pasti kosong
 						}
-						else if (j == 3)
+						else if (j = 3)
 						{
 							printf(" ");
 						}
@@ -192,8 +191,6 @@ void PrintMap()
 		else
 			printf("*");
 	}
-
-	printf("\n");
 }
 
 void PrintInfoGame()
