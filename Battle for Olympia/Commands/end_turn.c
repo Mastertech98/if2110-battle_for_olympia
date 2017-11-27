@@ -50,6 +50,7 @@ void EndTurn()
 	while (P) {
 		SetChanceAttack(Info(P), true);
 		SetMovementPoints(Info(P), GetMaximumMovementPoints(*(Unit*)Info(P)));
+		P = Next(P);
 	}
 
 	printf("Player %d's Turn\n", InfoHead(turn)+1);

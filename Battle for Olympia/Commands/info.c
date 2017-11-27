@@ -158,7 +158,7 @@ void PrintMap()
 							{
 								//Mencari warna dari unit tersebut dan mencetaknya
 								//representasi warna sama seperti diatas
-								char color = unit == GetSelectedUnit()? 'G' : GetUnitColor(*unit);
+								char color = unit == GetSelectedUnit()? '0' : GetUnitColor(*unit);
 								PrintByColor(GetUnitClass(*unit), color);
 							} else {
 								printf(" ");
@@ -195,6 +195,7 @@ void PrintMap()
 		else
 			printf("*");
 	}
+	printf("\n");
 }
 
 void PrintInfoGame()

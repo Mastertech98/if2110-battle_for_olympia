@@ -30,7 +30,6 @@ void Move(Unit *unit)
 
     MakeMovementMap(*unit);
 
-    printf("New map :\n");
     PrintMap();
     printf("\n");
 
@@ -95,7 +94,7 @@ void MakeMovementMap(Unit unit)
 
                 gridA = GetGrid(Absis(location)+(i*abs(j)*k), Ordinat(location)+(i*abs(j+1)*k));
 
-                printf("%d,%d\n", Absis(location)+(i*abs(j)*k), Ordinat(location)+(i*abs(j+1)*k));
+                //printf("%d,%d\n", Absis(location)+(i*abs(j)*k), Ordinat(location)+(i*abs(j+1)*k));
 
                 if(GetUnit(*gridA)==NULL){
                     SetUnit(gridA, &UNITMOV);

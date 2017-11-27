@@ -28,4 +28,6 @@ void SetUnit(Grid *grid, Unit *unit);
 int GetMapSizeN();
 int GetMapSizeM();
 
+int RandomVillage(int numberOfVillages);
+
 #endif
