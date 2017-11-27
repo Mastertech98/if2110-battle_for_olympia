@@ -137,7 +137,7 @@ void PrintMap()
 							Player *owner = GetOwner(*grid);
 							Type type = GetType(*grid);
 							char color = owner ? GetColor(*owner) : 0;
-
+							
 							PrintByColor(type, color);
 
 							//saat j=2 atau saat kasus ingin mencetak unit pada petak
@@ -153,7 +153,8 @@ void PrintMap()
 							{
 								//Mencari warna dari unit tersebut dan mencetaknya
 								//representasi warna sama seperti diatas
-								PrintByColor(GetUnitClass(*unit), GetUnitColor(*unit));
+								char color = unit == GetSelectedUnit()? 'G' : GetUnitColor(*unit);
+								PrintByColor(GetUnitClass(*unit), color);
 							} else {
 								printf(" ");
 							}
