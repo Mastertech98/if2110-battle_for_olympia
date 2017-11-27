@@ -1,5 +1,9 @@
 #include "changeunit.h"
+#include "../unit.h"
+#include "../Commands/end_turn.h"
 #include <stdio.h>
+
+Unit *selectedUnit;
 
 void ChangeUnit (Player *P, Unit **selectedUnit)
 {
@@ -57,4 +61,12 @@ void NextUnit (Player *P, Unit **selectedUnit)
     {
         printf("You don't have any unit that can move or attack\n");
     }
+}
+
+Unit *GetSelectedUnit(){
+	return selectedUnit;
+}
+
+void SetSelectedUnit(Unit unit){
+	*selectedUnit = unit;
 }
