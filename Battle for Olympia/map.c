@@ -1,5 +1,5 @@
 #include "map.h"
-
+#include <stdio.h>
 #include "ADT/matriks.h"
 
 Map map;
@@ -8,8 +8,8 @@ void CreateMap(int N, int M)
 {
     MakeMATRIKS(&map, N, M);
 
-    for (int i = 0; i < N; ++i) {
-        for (int j = 0; j < M; ++j) {
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
             Grid *grid = GetGrid(i, j);
             grid->coordinate = MakePOINT(i, j);
             grid->type = Normal;
@@ -46,17 +46,7 @@ void InitializeMap(int numberOfPlayers, POINT coordinates[], int numberOfVillage
         grid->type = Castle;
         SetOwner(grid, player);
     }
-
-    for (int j = 0; j < numberOfVillages; ++j) {
-        POINT coordinate;
-
-        do {
-            Absis(coordinate) = rand() % GetMapSizeN();
-            Ordinat(coordinate) = rand() % GetMapSizeM();
-        } while (GetType(*GetGrid(Absis(coordinate), Ordinat(coordinate))) != Normal);
-
-        GetGrid(Absis(coordinate), Ordinat(coordinate))->type = Village;
-    }
+    RandomVillage(numberOfVillages);
 }
 
 Grid *GetGrid(int x, int y)
@@ -107,4 +97,18 @@ int GetMapSizeN()
 int GetMapSizeM()
 {
     return map.M;
+}
+
+int RandomVillage(int numberOfVillages)
+{
+	for (int j = 0; j < numberOfVillages; ++j) {
+        POINT coordinate;
+
+        do {
+            Absis(coordinate) = (rand()*rand()) % GetMapSizeM();
+            Ordinat(coordinate) = (rand()*rand()) % GetMapSizeN();
+        } while (GetType(*GetGrid(Absis(coordinate), Ordinat(coordinate))) != Normal);
+
+        GetGrid(Absis(coordinate), Ordinat(coordinate))->type = Village;
+    }
 }
