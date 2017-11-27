@@ -36,7 +36,7 @@ typedef struct {
 /* Definisi akses dengan Selektor : Set dan Get */
 #define Top(S) (S).TOP
 #define InfoTop(S) (S).T[(S).TOP]
-#define InfoStackUnit(I) (I)->unit
+#define InfoStackUnit(I) (I).unit
 #define InfoStackMovPoint(I) (I).movPoint
 #define InfoStackOrigin(I) (I).origin
 #define InfoStackDestination(I) (I).destination
