@@ -9,10 +9,10 @@
 
 Queue turn;
 
-Unit FindKing(){
+Unit *FindKing(){
 	Unit *kingUnit;
 	kingUnit = (Unit *) Info(First(GetUnits(*GetCurrentPlayer())));
-	return *kingUnit;
+	return kingUnit;
 }
 void CreateQueue(int numberOfPlayers){
 	CreateEmpty(&turn,numberOfPlayers);

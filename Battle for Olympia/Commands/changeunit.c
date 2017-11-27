@@ -1,11 +1,10 @@
 #include "changeunit.h"
 #include "../unit.h"
-#include "../Commands/end_turn.h"
 #include <stdio.h>
 
 Unit *selectedUnit;
 
-void ChangeUnit (Player *P, Unit **selectedUnit)
+void ChangeUnit (Player *P)
 {
     /*I.S. P adalah player yang sedang memainkan turnnya, selectedUnit adalah unit yang sedang dipilih pada saat ini*/
     /*F.S. selectedUnit akan berganti sesuai dengan pilihan player*/
@@ -25,12 +24,12 @@ void ChangeUnit (Player *P, Unit **selectedUnit)
     else
     {
         pt = SearchbyChoice (units, choice);
-        *selectedUnit = (Unit *) Info(pt);
+        SetSelectedUnit((Unit *)Info(pt));
         
     }
 }
 
-void NextUnit (Player *P, Unit **selectedUnit)
+void NextUnit (Player *P)
 /* I.S. P adalah player yang sedang memainkan turnnya, selected unit adalah unit yang dipilih saat ini */
 /* F.S. selectedUnit akan berubah menjadi unit pertama dari list of units yang masih memiliki movementPoints */
 {
@@ -55,7 +54,7 @@ void NextUnit (Player *P, Unit **selectedUnit)
     }
     if (found)
     {
-        *selectedUnit = (Unit *) Info(Pt);
+        SetSelectedUnit((Unit *) Info(Pt));
     }
     else
     {
@@ -67,6 +66,6 @@ Unit *GetSelectedUnit(){
 	return selectedUnit;
 }
 
-void SetSelectedUnit(Unit unit){
-	*selectedUnit = unit;
+void SetSelectedUnit(Unit *unit){
+	selectedUnit = unit;
 }

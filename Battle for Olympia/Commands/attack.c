@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void Attack(Unit *attacker) {
     if (!GetChanceAttack(*attacker)) {
@@ -28,6 +29,14 @@ void Attack(Unit *attacker) {
         return;
     }
 
+    SetMovementPoints(attacker, 0);
+    SetChanceAttack(attacker, false);
+
+    if (rand() % 2) {
+        printf("You don't pray to RNGesus enough.\n");
+        return;
+    }
+
     Unit *attacked = target.enemy[--index];
     char stringAttackedClass[11];
     
@@ -38,25 +47,27 @@ void Attack(Unit *attacker) {
 
     if (GetHealth(*attacked) <= 0) {
         printf("Enemy's %s is dead :)\n", stringAttackedClass);
-    }
+    } else {
+        if (GetUnitClass(*attacked) == King || GetAttackType(*attacker) == GetAttackType(*attacked)) {
+            char stringAttackerClass[11];
 
-    if (Retaliates(*attacked, *attacker)) {
-        char stringAttackerClass[11];
+            if (rand() % 2) {
+                printf("RNGesus is on your side u.\n");
+                return;
+            }
 
-        printf("Enemy's %s retaliates.\n", stringAttackedClass);
+            printf("Enemy's %s retaliates.\n", stringAttackedClass);
 
-        SetHealth(attacker, GetHealth(*attacker) - GetAttack(*attacked));
+            SetHealth(attacker, GetHealth(*attacker) - GetAttack(*attacked));
 
-        UnitClassName(GetUnitClass(*attacker), stringAttackerClass);
-        printf("Your %s is damaged by %d\n", stringAttackerClass, GetAttack(*attacked));
+            UnitClassName(GetUnitClass(*attacker), stringAttackerClass);
+            printf("Your %s is damaged by %d\n", stringAttackerClass, GetAttack(*attacked));
 
-        if (GetHealth(*attacker) <= 0) {
-            printf("Your %s is dead :(\n", stringAttackerClass);
+            if (GetHealth(*attacker) <= 0) {
+                printf("Your %s is dead :(\n", stringAttackerClass);
+            }
         }
     }
-
-    SetMovementPoints(attacker, 0);
-    SetChanceAttack(attacker, false);
 
     if (GetHealth(*attacker) <= 0) {
         Kill(attacker);

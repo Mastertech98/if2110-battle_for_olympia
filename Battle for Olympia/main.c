@@ -5,8 +5,6 @@
 #include <stdio.h>
 #include <string.h>
 
-int turn;
-Unit *selectedUnit;
 boolean gameOver;
 Stack S_moves;
 
@@ -21,7 +19,7 @@ int main () {
 
     POINT coordinates[] = {{1, n-2}, {n-2, 1}};
     InitializeMap(2, coordinates, n*m/15);
-    InitializePlayer(2, coordinates);
+    InitializePlayers(2, coordinates);
     InitializeQueue(2);
 
     char command[11];
@@ -32,11 +30,11 @@ int main () {
         } else if (!strcmp(command, "UNDO")) {
             
         } else if (!strcmp(command, "CHANGE_UNIT")) {
-            ChangeUnit(GetCurrentPlayer(), &selectedUnit);
+            ChangeUnit(GetCurrentPlayer());
         } else if (!strcmp(command, "RECRUIT")) {
-            RecruitUnit(GetCurrentPlayer(), selectedUnit);
+            RecruitUnit(GetCurrentPlayer(), GetSelectedUnit());
         } else if (!strcmp(command, "ATTACK")) {
-            Attack(selectedUnit);
+            Attack(GetSelectedUnit());
         } else if (!strcmp(command, "MAP")) {
             PrintMap();
         } else if (!strcmp(command, "INFO")) {

@@ -1,5 +1,7 @@
 #include "info.h"
 
+#include "changeunit.h"
+
 #include "../pcolor.h"
 #include <stdio.h>
 

@@ -6,7 +6,7 @@
 
 Queue turn;
 
-Unit FindKing();
+Unit *FindKing();
 void CreateQueue(int numberOfPlayers);
 void InitializeQueue(int numberOfPlayers);
 void EndTurn();
