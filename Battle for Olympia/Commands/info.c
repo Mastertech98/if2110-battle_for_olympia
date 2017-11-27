@@ -162,7 +162,7 @@ void PrintMap()
 							}
 							//kasus ketika j = 3 atau saat petak pasti kosong
 						}
-						else if (j = 3)
+						else if (j == 3)
 						{
 							printf(" ");
 						}
@@ -192,6 +192,8 @@ void PrintMap()
 		else
 			printf("*");
 	}
+
+	printf("\n");
 }
 
 void PrintInfoGame()

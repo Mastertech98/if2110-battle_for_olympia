@@ -1,34 +1,66 @@
 #include "end_turn.h"
+#include "../corefiles.h"
 #include "../ADT/queue.h"
-#include "../ADT/matriks.h"
-#include "../ADT/boolean.h"
-#include "../unit.h"
-#include "../map.h"
-#include "../player.h"
+#include "../ADT/point.h"
 #include "changeunit.h"
+
+#include <string.h>
+#include <stdio.h>
 
 Queue turn;
 
-Unit *FindKing(){
-	Unit *kingUnit;
-	kingUnit = (Unit *) Info(First(GetUnits(*GetCurrentPlayer())));
-	return kingUnit;
+void CreateQueue(int numberOfPlayers)
+{
+	CreateEmpty(&turn, numberOfPlayers);
 }
-void CreateQueue(int numberOfPlayers){
-	CreateEmpty(&turn,numberOfPlayers);
-}
-void InitializeQueue(int numberOfPlayers){
-	for(int i=1;i<=numberOfPlayers;i++){
-		Add(&turn,i);
+void InitializeQueue(int numberOfPlayers)
+{
+	Add(&turn, numberOfPlayers-1);
+	for (int i = 0; i < numberOfPlayers-1; i++)
+	{
+		Add(&turn, i);
 	}
 }
-void EndTurn(){
-	infotypeQueue tempQ; 
-	Del(&turn,&tempQ);
-	Add(&turn,tempQ);
-	SetSelectedUnit(FindKing());
+void EndTurn()
+{
+	infotypeQueue tempQ;
+	Player *currentPlayer;
+	Unit *currentUnit;
+	char stringUnitClass[11];
+	char stringCanAttack[4];
+
+	Del(&turn, &tempQ);
+	Add(&turn, tempQ);
+
+	currentPlayer = GetCurrentPlayer();
+	SetSelectedUnit(Info(First(GetUnits(*currentPlayer))));
+	
+	currentUnit = GetSelectedUnit();
+	POINT location = GetLocation(*currentUnit);
+
+	UnitClassName(GetUnitClass(*currentUnit), stringUnitClass);
+	if (GetChanceAttack(*currentUnit)) {
+		strcpy(stringCanAttack, "Yes");
+	} else {
+		strcpy(stringCanAttack, "No");
+	}
+
+	printf("Player %d's Turn\n", InfoHead(turn)+1);
+	printf("Cash: %dG | Income: %dG | Upkeep: %dG\n", 
+		GetGold(*currentPlayer), 
+		GetIncome(*currentPlayer), 
+		GetUpkeep(*currentPlayer)
+	);
+	printf("Unit: %s(%d,%d) | Movement Point: %d | Can Attack: %s\n", 
+		stringUnitClass, 
+		Absis(location), 
+		Ordinat(location), 
+		GetMovementPoints(*currentUnit), 
+		stringCanAttack
+	);
 }
 
-Player *GetCurrentPlayer(){
+Player *GetCurrentPlayer()
+{
 	return &players[InfoHead(turn)];
 }

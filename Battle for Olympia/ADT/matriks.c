@@ -6,14 +6,14 @@
 
 /* ********** REALISASI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk MATRIKS *** */
-void MakeMATRIKS(MATRIKS *M, int NB, int NK)
-/* Membentuk sebuah MATRIKS "kosong" yang siap diisi berukuran NB x NK di "ujung kiri" memori */
-/* I.S. NB dan NK adalah valid untuk memori matriks yang dibuat */
+void MakeMATRIKS(MATRIKS *M, int NK, int NB)
+/* Membentuk sebuah MATRIKS "kosong" yang siap diisi berukuran NK x NB di "ujung kiri" memori */
+/* I.S. NK dan NB adalah valid untuk memori matriks yang dibuat */
 /* F.S. Matriks M sesuai dengan definisi di atas terbentuk */
 {   
     M->Mem = malloc(NB * NK * sizeof(ElType));
-    M->N = NB;
-	M->M = NK;
+    M->N = NK;
+	M->M = NB;
 }
 
 /* *** Selektor *** */

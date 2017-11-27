@@ -2,6 +2,7 @@
 #include "../map.h"
 #include <stdio.h>
 #include <string.h>
+#include "info.h"
 
 Map map;
 Stack S_moves;
@@ -9,7 +10,6 @@ Stack S_moves;
 const Unit UNITMOV = {
     .unitClass = Movement,
     /*.color = 'G',
-
     .maximumHealth = DUMVAL,
     .health = DUMVAL,
     .attack = DUMVAL,

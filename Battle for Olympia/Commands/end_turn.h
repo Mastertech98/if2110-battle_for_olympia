@@ -4,9 +4,6 @@
 #include "../ADT/queue.h"
 #include "../player.h"
 
-Queue turn;
-
-Unit *FindKing();
 void CreateQueue(int numberOfPlayers);
 void InitializeQueue(int numberOfPlayers);
 void EndTurn();
