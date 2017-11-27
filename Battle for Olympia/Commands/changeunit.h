@@ -5,12 +5,12 @@
 #include "recruit.h"
 #include <stdlib.h>
 
-void ChangeUnit (Player *P, Unit **selectedUnit);
+void ChangeUnit (Player *P);
 
-void NextUnit (Player *P, Unit **selectedUnit);
+void NextUnit (Player *P);
 
 Unit *GetSelectedUnit();
 
-void SetSelectedUnit(Unit unit);
+void SetSelectedUnit(Unit *unit);
 
 #endif

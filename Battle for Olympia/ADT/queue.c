@@ -9,7 +9,7 @@
 boolean IsEmpty(Queue Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */
 {
-    return Head(Q) == NULL && Tail(Q) == NULL;
+    return Head(Q) == 0 && Tail(Q) == 0;
 }
 boolean IsFull(Queue Q)
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
@@ -43,11 +43,11 @@ void CreateEmpty(Queue *Q, int Max)
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
 {
     (*Q).T = (infotypeQueue *)malloc((Max + 1) * sizeof(infotypeQueue));
-    if ((*Q).T != NULL)
+    if ((*Q).T != 0)
     {
         MaxEl(*Q) = Max;
-        Head(*Q) = NULL;
-        Tail(*Q) = NULL;
+        Head(*Q) = 0;
+        Tail(*Q) = 0;
     }
     else
     {
@@ -97,8 +97,8 @@ void Del(Queue *Q, infotypeQueue *X)
 
     if (Head(*Q) == Tail(*Q))
     {
-        Head(*Q) = NULL;
-        Tail(*Q) = NULL;
+        Head(*Q) = 0;
+        Tail(*Q) = 0;
     }
     else if (Head(*Q) == MaxEl(*Q))
     {

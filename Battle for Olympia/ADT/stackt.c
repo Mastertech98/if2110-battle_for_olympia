@@ -15,7 +15,7 @@ void CreateEmptyStack (Stack *S)
 /* Ciri stack kosong : TOP bernilai NULL */
 {   /* Kamus Lokal */
     /* Algoritma */
-    Top(*S) = NULL;
+    Top(*S) = 0;
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
@@ -23,7 +23,7 @@ boolean IsEmptyStack (Stack S)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 {   /* Kamus Lokal */
     /* Algoritma */
-    return (Top(S)==NULL);
+    return (Top(S)==0);
 }
 boolean IsFullStack(Stack S)
 /* Mengirim true jika tabel penampung NULLai elemen stack penuh */
