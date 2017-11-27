@@ -2,6 +2,7 @@
 #define CHANGEUNIT_H
 
 #include "../corefiles.h"
+#include "recruit.h"
 #include <stdlib.h>
 
 void ChangeUnit (Player *P, Unit **selectedUnit);

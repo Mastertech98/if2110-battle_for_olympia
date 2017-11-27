@@ -1,4 +1,5 @@
 #include "../Commands/recruit.h"
+#include "../Commands/changeunit.h"
 #include <stdio.h>
 
 int main()

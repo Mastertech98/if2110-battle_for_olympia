@@ -31,15 +31,30 @@ void NextUnit (Player *P, Unit **selectedUnit)
 /* F.S. selectedUnit akan berubah menjadi unit pertama dari list of units yang masih memiliki movementPoints */
 {
     List units;
+    Unit *unitPointed;
     address Pt;
     boolean found = false;
 
     units = GetUnits(*P);
     Pt = First(units);
-    while (!found && *selectedunit != Pt)
+    while (!found)
     {
-        if (GetMovementPoint())
-        
+        unitPointed = (Unit *) Info(Pt);
+        if (GetMovementPoints(*unitPointed) > 0 || GetChanceAttack(*unitPointed) )
+        {
+            found = true;
+        }
+        else
+        {
+            Pt = Next(Pt);
+        }
     }
-    if ()
+    if (found)
+    {
+        *selectedUnit = (Unit *) Info(Pt);
+    }
+    else
+    {
+        printf("You don't have anymore unit that can move or attack\n");
+    }
 }
