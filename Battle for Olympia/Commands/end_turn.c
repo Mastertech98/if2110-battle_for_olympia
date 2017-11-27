@@ -45,6 +45,13 @@ void EndTurn()
 		strcpy(stringCanAttack, "No");
 	}
 
+	SetGold(currentPlayer, GetGold(*currentPlayer)+GetIncome(*currentPlayer)-GetUpkeep(*currentPlayer));
+	address P = First(GetUnits(*currentPlayer));
+	while (P) {
+		SetChanceAttack(Info(P), true);
+		SetMovementPoints(Info(P), GetMaximumMovementPoints(*(Unit*)Info(P)));
+	}
+
 	printf("Player %d's Turn\n", InfoHead(turn)+1);
 	printf("Cash: %dG | Income: %dG | Upkeep: %dG\n", 
 		GetGold(*currentPlayer), 
