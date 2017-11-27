@@ -55,6 +55,6 @@ void NextUnit (Player *P, Unit **selectedUnit)
     }
     else
     {
-        printf("You don't have anymore unit that can move or attack\n");
+        printf("You don't have any unit that can move or attack\n");
     }
 }

@@ -49,4 +49,6 @@ void SalinKata();
 boolean isKataSama (Kata S1, Kata S2);
 /* Mengembalikan true jika S1 == S2, dan false jika tidak sama */
 
+Kata StringToKata (char kata[]);
+/* mengubah tipe variabel array of char menjadi tipe bentukan kata */
 #endif

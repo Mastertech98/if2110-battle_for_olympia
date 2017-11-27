@@ -82,13 +82,13 @@ void SalinKata()
 boolean isKataSama (Kata S1, Kata S2)
 /* Mengembalikan true jika S1 == S2, dan false jika tidak sama */
 {
-    if (Length.S1 != Length.S2)
+    if (S1.Length != S2.Length)
         return false;
     else
     {
        boolean found = false;
        int i = 1;
-       while (!found && i <= Length.S1)
+       while (!found && i <= S1.Length)
        {
             if (S1.TabKata[i] ==  S2.TabKata[i])
             {
@@ -101,4 +101,21 @@ boolean isKataSama (Kata S1, Kata S2)
        }
        return !found;
     }
+} 
+
+Kata StringToKata (char kata[])
+/* mengubah tipe variabel array of char menjadi tipe bentukan kata */
+{
+    int i=0;
+    Kata result;
+    int length=0;
+
+    while(kata[i] != '\n')
+    {
+        result.TabKata[i]= kata[i];
+        length++;
+        i++;
+    }
+    result.Length = length;
+    return result;
 }
