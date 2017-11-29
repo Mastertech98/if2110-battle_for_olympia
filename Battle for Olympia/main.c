@@ -33,7 +33,7 @@ int main () {
         if (!strcmp(command, "MOVE")) {
             Move(GetSelectedUnit());
         } else if (!strcmp(command, "UNDO")) {
-            
+            Undo();
         } else if (!strcmp(command, "CHANGE_UNIT")) {
             ChangeUnit(GetCurrentPlayer());
         } else if (!strcmp(command, "RECRUIT")) {
