@@ -1,0 +1,206 @@
+# depslib dependency file v1.0
+1511014392 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\attack.c
+	"attack.h"
+	<stdio.h>
+	<string.h>
+
+1511014392 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\attack.h
+	"unit.h"
+	"map.h"
+	"player.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\unit.h
+	"ADT/point.h"
+	<stdlib.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\point.h
+	"boolean.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\boolean.h
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\map.h
+	"ADT/point.h"
+	"player.h"
+	"unit.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\player.h
+	"ADT/listlinier.h"
+	"ADT/matriks.h"
+	"unit.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\listlinier.h
+	"boolean.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\jam.c
+	"jam.h"
+	<stdio.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\jam.h
+	"boolean.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\listlinier.c
+	"listlinier.h"
+	<stdlib.h>
+	<stdio.h>
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\matriks.c
+	"matriks.h"
+	<stdlib.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\matriks.h
+	"boolean.h"
+	"point.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\mesinkar.c
+	"mesinkar.h"
+	<stdio.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\mesinkar.h
+	"boolean.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\mesinkata.c
+	"mesinkata.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\mesinkata.h
+	"boolean.h"
+	"mesinkar.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\point.c
+	"point.h"
+	<stdio.h>
+	<math.h>
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\queue.c
+	"queue.h"
+	<stdlib.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\queue.h
+	"boolean.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\stackt.c
+	"stackt.h"
+	<stdlib.h>
+
+1511799999 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt\stackt.h
+	"boolean.h"
+	"../unit.h"
+	"../player.h"
+	"point.h"
+	"../adt.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\main.c
+	"corefiles.h"
+	"commands.h"
+	"adt.h"
+	<stdio.h>
+	<string.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\adt.h
+	"ADT/jam.h"
+	"ADT/point.h"
+	"ADT/matriks.h"
+	"ADT/mesinkata.h"
+	"ADT/queue.h"
+	"ADT/stackt.h"
+	"ADT/listlinier.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\map.c
+	"map.h"
+	"ADT/matriks.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\player.c
+	"player.h"
+	"map.h"
+	<stdlib.h>
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\unit.c
+	"unit.h"
+	<string.h>
+
+1511399796 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\move.c
+	"move.h"
+	"map.h"
+	<stdio.h>
+	<string.h>
+
+1511400392 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\move.h
+	"unit.h"
+	"map.h"
+	"player.h"
+	"ADT/stackt.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands.h
+	"Commands/attack.h"
+	"Commands/recruit.h"
+	"Commands/move.h"
+	"Commands/info.h"
+	"Commands/changeunit.h"
+	"Commands/end_turn.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\attack.h
+	"../corefiles.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\recruit.h
+	"../corefiles.h"
+	<stdlib.h>
+
+1511800429 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\move.h
+	"attack.h"
+	"recruit.h"
+	"move.h"
+	"../ADT/stackt.h"
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\info.h
+	"../corefiles.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\attack.c
+	"attack.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1511800421 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\move.c
+	"move.h"
+	"../map.h"
+	<stdio.h>
+	<string.h>
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\recruit.c
+	"recruit.h"
+	<stdio.h>
+	<stdlib.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\corefiles.h
+	"player.h"
+	"map.h"
+	"unit.h"
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\info.c
+	"info.h"
+	"end_turn.h"
+	"changeunit.h"
+	"../pcolor.h"
+	<stdio.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\pcolor.h
+
+1511744740 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\pcolor.c
+	<stdio.h>
+	"pcolor.h"
+
+1511801336 source:d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\drivermove.c
+	"corefiles.h"
+	"adt.h"
+	"commands.h"
+	<stdio.h>
+	<stdlib.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\changeunit.h
+	"../corefiles.h"
+	"recruit.h"
+	<stdlib.h>
+
+1511744740 d:\data\ferdiant\documents\_important\programming\c\alstrukdat\battle of olympia\battleofolympia\commands\end_turn.h
+	"../ADT/queue.h"
+	"../player.h"
+

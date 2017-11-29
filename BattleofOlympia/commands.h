@@ -1,0 +1,6 @@
+#include "Commands/attack.h"
+#include "Commands/recruit.h"
+#include "Commands/move.h"
+#include "Commands/info.h"
+#include "Commands/changeunit.h"
+#include "Commands/end_turn.h"
