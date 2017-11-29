@@ -10,14 +10,14 @@ Stack S_moves;
 
 int main () {
     int n, m;
-    char colors[] = {'1', '2'};
+    char colors[] = {'R', 'B'};
     printf("Enter map size: ");
     scanf("%d %d", &n, &m);
     CreateMap(n, m);
     CreatePlayers(2, colors);
     CreateQueue(2);
 
-    POINT coordinates[] = {{1, 2}, {5, 5}};
+    POINT coordinates[] = {{1, m-2}, {n-2, 1}};
     InitializeMap(2, coordinates, n*m/15);
     InitializePlayers(2, coordinates);
     InitializeQueue(2);
