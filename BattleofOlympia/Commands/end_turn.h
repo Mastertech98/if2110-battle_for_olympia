@@ -6,7 +6,9 @@
 
 void CreateQueue(int numberOfPlayers);
 void InitializeQueue(int numberOfPlayers);
+void Heal();
 void EndTurn();
 Player *GetCurrentPlayer();
+
 
 #endif

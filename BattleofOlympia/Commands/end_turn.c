@@ -6,6 +6,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 
 Queue turn;
 
@@ -21,6 +22,41 @@ void InitializeQueue(int numberOfPlayers)
 		Add(&turn, i);
 	}
 }
+void Heal(){
+	Unit *unitA;
+	Grid *gridA;
+	Player currentPlayer = *GetCurrentPlayer();
+	List list = GetUnits(currentPlayer);
+	address currentUnitList = First(list);
+	POINT location;
+	Unit *unit;
+	
+	while(currentUnitList != NULL){
+		unit = Info(currentUnitList);
+		location = GetLocation(*unit);
+		if(GetUnitClass(*unit) == WhiteMage){
+			for(int i = 0;i<=1;i++){
+				for(int j = -1;j<=1;j +=2){
+					if(Absis(location)+(i*j) < GetMapSizeN() && Absis(location)+(i*j)>=0
+					&& Ordinat(location)+(abs(i-1)*j) < GetMapSizeM() && Ordinat(location)+(abs(i-1)*j) >= 0){
+						gridA = GetGrid(Absis(location)+(i*j), Ordinat(location)+(abs(i-1)*j));
+						unitA = GetUnit(*gridA);
+						if(unitA!=NULL){
+							if(GetUnitColor(*unitA)==GetUnitColor(*unit)){
+								SetHealth(unitA, (int)GetHealth(*unitA) * 1.2);
+								if(GetHealth(*unitA) > GetMaximumHealth(*unitA)){
+									SetHealth(unitA,GetMaximumHealth(*unitA));
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		currentUnitList = Next(currentUnitList);
+	}
+	
+}
 void EndTurn()
 {
 	infotypeQueue tempQ;
@@ -34,6 +70,8 @@ void EndTurn()
 
 	currentPlayer = GetCurrentPlayer();
 	SetSelectedUnit(Info(First(GetUnits(*currentPlayer))));
+	
+	Heal();
 	
 	currentUnit = GetSelectedUnit();
 	POINT location = GetLocation(*currentUnit);
@@ -72,3 +110,5 @@ Player *GetCurrentPlayer()
 {
 	return &players[InfoHead(turn)];
 }
+
+

@@ -30,8 +30,8 @@ void InitializeMap(int numberOfPlayers, POINT coordinates[], int numberOfVillage
         grid->type = Tower;
         SetOwner(grid, player);
         
-        grid = GetGrid(x, y-1);
-        grid->type = Castle;
+        grid = GetGrid(x, y-1); // unit = GetUnit(*GetGrid...
+        grid->type = Castle;	// Heal(unit, healAmount)
         SetOwner(grid, player);
         
         grid = GetGrid(x, y+1);

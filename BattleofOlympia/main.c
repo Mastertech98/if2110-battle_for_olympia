@@ -21,9 +21,9 @@ int main () {
     InitializePlayers(2, coordinates);
     InitializeQueue(2);
 
+	EndTurn();
     PrintMap();
     printf("\n");
-    EndTurn();
 
     char command[11];
     do {
