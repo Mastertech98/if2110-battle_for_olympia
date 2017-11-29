@@ -2,7 +2,6 @@
 #include "../map.h"
 #include <stdio.h>
 #include <string.h>
-#include "info.h"
 
 Map map;
 Stack S_moves;
@@ -10,6 +9,7 @@ Stack S_moves;
 const Unit UNITMOV = {
     .unitClass = Movement,
     /*.color = 'G',
+
     .maximumHealth = DUMVAL,
     .health = DUMVAL,
     .attack = DUMVAL,
@@ -27,45 +27,66 @@ void Move(Unit *unit)
     POINT targetLoc;
     boolean moved = false;
     POINT location = GetLocation(*unit);
+    Player *player = GetOwner(*GetGrid(Absis(location), Ordinat(location)));
 
-    MakeMovementMap(*unit);
+    boolean occupyVillage = false;
 
-    PrintMap();
-    printf("\n");
+    if(GetMovementPoints(*unit)>0){
+        MakeMovementMap(*unit);
 
-    do{
-        printf("Please enter cell's coordinate x,y : ");
-        scanf("%d,%d", &Absis(targetLoc), &Ordinat(targetLoc));
+        printf("New map :\n");
+        PrintMap();
+        printf("\n");
 
-        Unit *targetUnitGrid = GetUnit(*GetGrid(Absis(targetLoc), Ordinat(targetLoc)));
+        do{
+            printf("Please enter cell's coordinate x,y : ");
+            scanf("%d,%d", &Absis(targetLoc), &Ordinat(targetLoc));
 
-        if(targetUnitGrid!=NULL){
-            if(GetUnitClass(*targetUnitGrid)==Movement){
-                infotypeStack tempS_moves = {
-                    .unit = unit,
-                    .movPoint = GetMovementPoints(*unit),
-                    .origin = location,
-                    .destination = targetLoc
-                };
-                Push(&S_moves, tempS_moves);
-                SetLocation(unit, targetLoc);
-                SetMovementPoints(unit, GetMovementPoints(*unit) - (abs(Absis(targetLoc)-Absis(location)) + abs((Ordinat(targetLoc)-Ordinat(location)))));
-                SetUnit(GetGrid(Absis(targetLoc), Ordinat(targetLoc)), unit);
-                SetUnit(GetGrid(Absis(location), Ordinat(location)), NULL);
-                printf("You've successfuly moved your unit to (%d,%d).\n", Absis(targetLoc), Ordinat(targetLoc));
-                moved = true;
-            }else if(Absis(location)==Absis(targetLoc) && Ordinat(location)==Ordinat(targetLoc)){
-                printf("You've cancelled your move.\n");
-                moved = true;
+            Unit *targetUnitGrid = GetUnit(*GetGrid(Absis(targetLoc), Ordinat(targetLoc)));
+            Grid *targetGrid = GetGrid(Absis(targetLoc), Ordinat(targetLoc));
+
+            if(targetUnitGrid!=NULL){
+                if(GetUnitClass(*targetUnitGrid)==Movement){
+                    infotypeStack tempS_moves = {
+                        .unit = unit,
+                        .movPoint = GetMovementPoints(*unit),
+                        .origin = location,
+                        .destination = targetLoc,
+                        .lastOwner = player
+                    };
+                    Push(&S_moves, tempS_moves);
+                    SetLocation(unit, targetLoc);
+                    if(GetType(*targetGrid)==Village){
+                        SetMovementPoints(unit, 0);
+                        SetOwner(targetGrid, player);
+                        DelVillage(GetOwner(*targetGrid), targetGrid);
+                        AddVillage(player, targetGrid);
+                        occupyVillage = true;
+                    }else{
+                        SetMovementPoints(unit, GetMovementPoints(*unit) - (abs(Absis(targetLoc)-Absis(location)) + abs((Ordinat(targetLoc)-Ordinat(location)))));
+                    }
+                    SetUnit(GetGrid(Absis(targetLoc), Ordinat(targetLoc)), unit);
+                    SetUnit(GetGrid(Absis(location), Ordinat(location)), NULL);
+                    printf("You've successfuly moved your unit to (%d,%d).\n", Absis(targetLoc), Ordinat(targetLoc));
+                    if(occupyVillage){
+                        printf("And occupy a village.\n");
+                    }
+                    moved = true;
+                }else if(Absis(location)==Absis(targetLoc) && Ordinat(location)==Ordinat(targetLoc)){
+                    printf("You've cancelled your move.\n");
+                    moved = true;
+                }else{
+                    printf("You can't move there!\n");
+                }
             }else{
                 printf("You can't move there!\n");
             }
-        }else{
-            printf("You can't move there!\n");
-        }
-    }while(!moved);
+        }while(!moved);
 
-    ClearMovementMap();
+        ClearMovementMap();
+    }else{
+        printf("Current unit doesn't have any movement points left!\n");
+    }
 }
 
 void MakeMovementMap(Unit unit)
@@ -114,8 +135,8 @@ void ClearMovementMap()
 {
     Unit *unit;
 
-    for(int i=0; i<GetMapSizeN(map); i++){
-        for(int j=0; j<GetMapSizeM(map); j++){
+    for(int i=0; i<GetMapSizeN(); i++){
+        for(int j=0; j<GetMapSizeM(); j++){
             unit = GetUnit(*GetGrid(i,j));
             if(unit!=NULL){
                 if(GetUnitClass(*unit)==Movement){
@@ -136,8 +157,14 @@ void Undo(){
 		printf("You can't undo.\n");
 	} else {
 		Pop(&S_moves, &tempS_moves);
+		Grid *destGrid = GetGrid( Absis(InfoStackDestination(tempS_moves)), Ordinat(InfoStackDestination(tempS_moves)));
         SetLocation(InfoStackUnit(tempS_moves), InfoStackOrigin(tempS_moves));
         SetMovementPoints(InfoStackUnit(tempS_moves), InfoStackMovPoint(tempS_moves));
+        if(GetType(*destGrid)==Village && GetOwner(*destGrid)!=InfoStackLastOwner(tempS_moves)){
+            SetOwner(destGrid, InfoStackLastOwner(tempS_moves));
+            DelVillage(GetOwner(*destGrid), destGrid);
+            AddVillage(InfoStackLastOwner(tempS_moves), destGrid);
+        }
         SetUnit(GetGrid(Absis(InfoStackOrigin(tempS_moves)),Ordinat(InfoStackOrigin(tempS_moves))), InfoStackUnit(tempS_moves));
         SetUnit(GetGrid(Absis(InfoStackDestination(tempS_moves)),Ordinat(InfoStackDestination(tempS_moves))), NULL);
         printf("You've successfuly undo your unit to (%d,%d).\n", Absis(InfoStackDestination(tempS_moves)),Ordinat(InfoStackDestination(tempS_moves)));
