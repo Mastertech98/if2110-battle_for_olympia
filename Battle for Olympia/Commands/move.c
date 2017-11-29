@@ -6,9 +6,9 @@
 Map map;
 Stack S_moves;
 
-const Unit UNITMOV = {
+Unit UNITMOV = {
     .unitClass = Movement,
-    /*.color = 'G',
+    .color = 'G',
 
     .maximumHealth = DUMVAL,
     .health = DUMVAL,
@@ -19,7 +19,7 @@ const Unit UNITMOV = {
     .chanceAttack = true,
     .location.X = -999,
     .location.Y = -999,
-    .price = DUMVAL*/
+    .price = DUMVAL
 };
 
 void Move(Unit *unit)
@@ -40,8 +40,9 @@ void Move(Unit *unit)
 
         do{
             printf("Please enter cell's coordinate x,y : ");
-            scanf("%d,%d", &Absis(targetLoc), &Ordinat(targetLoc));
+            scanf("%d %d", &Absis(targetLoc), &Ordinat(targetLoc));
 
+			printf("Color of current player : %c\n", GetColor(*player));
             Unit *targetUnitGrid = GetUnit(*GetGrid(Absis(targetLoc), Ordinat(targetLoc)));
             Grid *targetGrid = GetGrid(Absis(targetLoc), Ordinat(targetLoc));
 
@@ -52,16 +53,16 @@ void Move(Unit *unit)
                         .movPoint = GetMovementPoints(*unit),
                         .origin = location,
                         .destination = targetLoc,
-                        .lastOwner = player
+                        .lastOwner = GetOwner(*targetGrid)
                     };
                     Push(&S_moves, tempS_moves);
                     SetLocation(unit, targetLoc);
-                    if(GetType(*targetGrid)==Village){
-                        SetMovementPoints(unit, 0);
-                        SetOwner(targetGrid, player);
-                        DelVillage(GetOwner(*targetGrid), targetGrid);
-                        AddVillage(player, targetGrid);
-                        occupyVillage = true;
+                    if(GetType(*targetGrid)==Village && GetOwner(*targetGrid)!=player){
+							SetMovementPoints(unit, 0);
+							if(GetOwner(*targetGrid)!=NULL) DelVillage(GetOwner(*targetGrid), targetGrid);
+							SetOwner(targetGrid, player);
+							AddVillage(player, targetGrid);
+							occupyVillage = true;
                     }else{
                         SetMovementPoints(unit, GetMovementPoints(*unit) - (abs(Absis(targetLoc)-Absis(location)) + abs((Ordinat(targetLoc)-Ordinat(location)))));
                     }
@@ -161,9 +162,9 @@ void Undo(){
         SetLocation(InfoStackUnit(tempS_moves), InfoStackOrigin(tempS_moves));
         SetMovementPoints(InfoStackUnit(tempS_moves), InfoStackMovPoint(tempS_moves));
         if(GetType(*destGrid)==Village && GetOwner(*destGrid)!=InfoStackLastOwner(tempS_moves)){
-            SetOwner(destGrid, InfoStackLastOwner(tempS_moves));
             DelVillage(GetOwner(*destGrid), destGrid);
-            AddVillage(InfoStackLastOwner(tempS_moves), destGrid);
+            SetOwner(destGrid, InfoStackLastOwner(tempS_moves));
+            if(InfoStackLastOwner(tempS_moves)!=NULL) AddVillage(InfoStackLastOwner(tempS_moves), destGrid);
         }
         SetUnit(GetGrid(Absis(InfoStackOrigin(tempS_moves)),Ordinat(InfoStackOrigin(tempS_moves))), InfoStackUnit(tempS_moves));
         SetUnit(GetGrid(Absis(InfoStackDestination(tempS_moves)),Ordinat(InfoStackDestination(tempS_moves))), NULL);

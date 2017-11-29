@@ -11,7 +11,7 @@
 
 extern Stack S_moves;
 
-const Unit UNITMOV;
+extern Unit UNITMOV;
 
 void Move(Unit *unit);
 void MakeMovementMap(Unit unit);
