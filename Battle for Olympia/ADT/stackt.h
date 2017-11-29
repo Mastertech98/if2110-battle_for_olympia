@@ -7,6 +7,7 @@
 
 #include "boolean.h"
 #include "../unit.h"
+#include "../player.h"
 #include "point.h"
 #include "../adt.h"
 
@@ -18,6 +19,7 @@ typedef struct {
     int movPoint;
     POINT origin;
     POINT destination;
+    Player *lastOwner;
 } infotypeStack;
 typedef int addrStack;   /* indeks tabel */
 
@@ -40,6 +42,7 @@ typedef struct {
 #define InfoStackMovPoint(I) (I).movPoint
 #define InfoStackOrigin(I) (I).origin
 #define InfoStackDestination(I) (I).destination
+#define InfoStackLastOwner(I) (I).lastOwner
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
