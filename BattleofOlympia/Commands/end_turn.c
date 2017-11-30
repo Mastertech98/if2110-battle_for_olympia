@@ -59,6 +59,14 @@ void Heal(){
 }
 void EndTurn()
 {
+	address Pv = First(GetVillages(*GetCurrentPlayer()));
+	int count = 0;
+	while (Pv) {
+		count++;
+		Pv = Next(Pv);
+	}
+	SetIncome(GetCurrentPlayer(), count + 1);
+
 	infotypeQueue tempQ;
 	Player *currentPlayer;
 	Unit *currentUnit;
